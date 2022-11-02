@@ -1,3 +1,11 @@
+# `ChangeLog.md` 📝
+
+Legend:
+
+♾️ - Google Colab notebook changes.
+
+---
+
 ## 0.1
 Alpha development.
 
@@ -95,12 +103,10 @@ Initial release.
 - Changed Banner format from `PNG` to `SVG`.
 - Configuration keys & values order.
 - Delay system.
-### Fixed 📝
-- `Delay` without `Optimize` option enabled. **(?)**
 
 ## 2.7
 ### Added ➕
-- Google Colab notebook.
+- Google Colab notebook. ♾️
 ### Modified 🔁
 - Replaced `Roboto Black` with `Roboto Condensed Bold`.
 - Requirements.
@@ -108,7 +114,7 @@ Initial release.
 ### Removed 🚫
 - `Pinterest` support. (*although still in code*)
 ### Fixed 📝
-- Issue where some GIFs couldn't be saved.
+- Some GIFs couldn't be saved.
 
 ## 2.8
 ### Added ➕
@@ -116,6 +122,8 @@ Initial release.
 - `requirements.txt`
 - Issues Templates.
 - Automatic text-wrap.
+- Utility scripts.
+- Wiki.
 ### Modified 🔁
 - Replaced `Futura Extra Black Condensed Regular` to `Futura Condensed Extra Bold`.
   - A lot more characters are supported now.
@@ -126,19 +134,67 @@ Initial release.
 - `Dark_Mode` font color to `#A0A0A0`.
 - Increased Font quality.
 - File detection system.
-### Fixed 📝
-- Issue where GIFs were slowed down when `Delay` was `0`.
 ### Removed 🚫
 - `Wrap_Factor`.
 - `Max_Width`.
 - [ReplyGIF.net](https://replygif.net) support.
-- Google Colab notebook.
+- Google Colab notebook. ♾️
 
 ## Re-release 2.8
 ### Added ➕
-- Google Colab notebook.
+- Google Colab notebook. ♾️
 - `Folders` Wiki page.
 ### Modified 🔁
 - Replaced examples in `Images`.
 ### Fixed 📝
 - `ReadMe` URLs.
+
+## 2.9
+### Added ➕
+- `auepa` API support.
+- Frames extraction interruption.
+- Empty captions support.
+- Increased control of text height spacing.
+- Metadata system.
+- Cache system.
+- `Run.bat` - for Windows users.
+- `Kerning`.
+- `Colored_Prints`.
+- `Sound`.
+- `emojicdn` API style selection.
+### Modified 🔁
+- Notebook prints. ♾️
+- Relicensed program to GPL V3.
+- Replaced banner with the old one, but with `SVG` format.
+- Changed files extension from `py` to `pyw`.
+### Fixed 📝
+- Saving one-framed images to GIF instead of PNG. ♾️
+- Font type. ♾️
+- Capitalized acute accent letters rendering.
+- Lower diactric hooks letters rendering.
+- `auepa` emoji rendering.
+- Emojis rendering.
+- Font randomness.
+
+## Re-release 2.9
+### Added ➕
+- Newline support.
+- `Documents/iFunny-Captions.svg`
+### Modified 🔁
+- Notebook banner. ♾️
+- Switched to percentage calculation system.
+### Fixed 📝
+- Some notebook bugs. ♾️
+### Removed 🚫
+- `Documents/CONTRIBUTING.md`
+
+## 3.0
+### Added ➕
+- `.gitignore`
+- `FFmpeg Locations` exception handling.
+- Support for media streams.
+### Modified 🔁
+- Removed spaces from `Config.json` keys.
+### Fixed 📝
+- Non-URL files import.
+- Cache system.
