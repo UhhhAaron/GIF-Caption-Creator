@@ -5,11 +5,15 @@
 		"Crop": false
 	},
 	"Font": {
-		"Type": 2
+		"Type": 3,
+		"Size": false
 	},
 	"Settings": {
-		"Speed": 28
+		"Delay": 12,
+		"Saving_Method": 1,
+		"Optimize": true,
+		"Logs": false
 	},
 	"Text": "",
-	"Wrap": 14
+	"Wrap_Factor": 2
 }

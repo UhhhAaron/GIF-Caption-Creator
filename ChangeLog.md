@@ -16,3 +16,13 @@ Changed fonts.
 Modified several functions.
 Optimized creation time (ffmpeg >= 4.0.0)
 Added font.
+
+## 2.2
+Bug-fixing.
+Added `Logs`.
+
+## 2.3
+Added `gifsicle >= 1.9.2` encoder.
+Added `Optimization`.
+Added Offline Support.
+Modified text-wrapping system.
