@@ -3,12 +3,14 @@ Image_Trans = Image.new("RGBA", (2000, 2250), (255, 255, 255, 0))	# Transparent
 
 Draw = ImageDraw.Draw(Image_Trans)
 
-__Fonts = ["Roboto Black", "Futura Extra Black Condensed Regular"]
+__Fonts = [File[:-4] for File in os.listdir(os.getcwd() + __SLASH + "Fonts") if File.endswith("otf")][::-1]
 if Config()["Font"]["Type"] == 1:
 	__Path = "{0}\\Fonts\\{1}.otf".format(os.getcwd(), __Fonts[0])
 if Config()["Font"]["Type"] == 2:
 	__Path = "{0}\\Fonts\\{1}.otf".format(os.getcwd(), __Fonts[1])
-
+if Config()["Font"]["Type"] == 0:
+	__Path = "{0}\\Fonts\\{1}.otf".format(os.getcwd(), choice(__Fonts))
+	
 if system() != "Windows":
 	__Path = __Path.replace("\\", "/")
 

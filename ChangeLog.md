@@ -8,34 +8,51 @@ Re-write.
 Initial release.
 
 ## 2.0
-Bug-fixing.
-Added GIF support. (ffmpeg >= 2.2.2)
-Changed fonts.
+### Added ➕
+- GIF support. (FFmpeg >= 2.2.2)
+### Fixed 📝
+- Several bugs.
+### Modified 🔁
+- Changed fonts.
 
 ## 2.1
-Modified several functions.
-Optimized creation time (ffmpeg >= 4.0.0)
-Added font.
+### Added ➕
+- Font. (`Futura Bold`)
+### Modified 🔁
+- Modified several functions.
+- Image creation time (FFmpeg >= 4.0.0)
 
 ## 2.2
-Bug-fixing.
-Added `Logs`.
+### Added ➕
+- `Logs`.
+### Fixed 📝
+- Several bugs.
 
 ## 2.3
-Added `gifsicle >= 1.9.2` encoder dependency.
-Added `Optimization`.
-Added Offline Support.
-Modified text-wrapping system.
+### Added ➕
+- `gifsicle >= 1.9.2` encoder dependency.
+- `Optimization`.
+- Offline Support.
+### Modified 🔁
+- Text-wrapping system.
 
 ## 2.4
-Updated fonts to `OpenType` format (`otf`).
-Increased vertical distance between text-wrapped phrases.
-Fixed `Delay` without `Optimize` option enabled.
-Fixed saving issues. (Forgot to replace `"` in file name)
-Added Gfycat support.
-Removed `Crop`.
-Removed `Saving_Method`:
-- `PIL` is now used for single-framed images. (i.e. `PNG`, `JPG`)
-- `ffmpeg` is now used for GIFs.
-
-Added transparent GIF support. (ffmpeg >= 4.2.0)
+### Added ➕
+- Gfycat support.
+- Transparent GIF support. (FFmpeg >= 4.2.0)
+- `Meta` section to `ReadMe`.
+- Font randomness.
+###Modified 🔁
+- Renamed `Captions` to `Images`.
+- Modified the vertical distance between text-wrapped phrases.
+- Replaced fonts to `OpenType` format. (`otf`)
+- Replaced examples Images.
+### Fixed 📝
+- `Delay` without `Optimize` option enabled.
+- Saving issues. (Forgot to replace `"` in the filename)
+### Removed 🚫
+- `Crop`
+  - Could cause problems. Furthermore I don't think that anybody would use it.
+- `Saving_Method`:
+  - `PIL` is now used for single-framed images. (ie. `PNG`, `JPG`)
+  - `FFmpeg` is now used for GIFs.
