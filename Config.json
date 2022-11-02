@@ -1,17 +1,15 @@
 {
 	"Image": {
-		"URL": "",
-		"Max_Width": 300,
-		"Crop": false
+		"URL / Path": "",
+		"Max_Width": 300
 	},
 	"Font": {
-		"Type": 3,
+		"Type": 2,
 		"Size": false
 	},
 	"Settings": {
-		"Delay": 12,
-		"Saving_Method": 1,
-		"Optimize": true,
+		"Delay": 5,
+		"Optimize_Factor": 3,
 		"Logs": false
 	},
 	"Text": "",

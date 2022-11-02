@@ -15,43 +15,38 @@ I was very unsatisfied that there was only a mobile app caption tool so I've dec
 - [x] `Tenor` URLs support＊＊
 - [x] Optimization
 - [x] GIF size reduction
-- [ ] Transparent GIF support
+- [x] Transparent GIF support
 - [ ] [Program Showcase]()
 
-＊ - **If You are on Windows, you need to add two backslashes instead of one in Path**!
-＊＊ - Beta, may not work with some URLs 
+＊ - <h style="color:red">**If You are on Windows, you need to add two backslashes instead of one in Path!**</h>
+＊＊ - Beta, **may** not work with some URLs.
 
 ## Requirements 📥
-- `Python >= 3.5.0` +
+- `Python >= 3.5.0`
 - `PIL`
 - `requests`
-- **`ffmpeg >= 4.0.0`** * static executable binary*
+- **`ffmpeg >= 4.2.0 static executable binary`** - Since `PIL.ImageSequence.Iterator` messes up the frames colors.
   - [Windows](https://www.videohelp.com/software/ffmpeg/old-versions "Windows") (Move `ffmpeg.exe` from `bin` to main folder)
   - [Linux](https://www.johnvansickle.com/ffmpeg/old-releases/)
-- `gifsicle >= 1.9.2` *static executable binary*
+- `gifsicle >= 1.9.2 static executable binary`
   - [Windows](https://eternallybored.org/misc/gifsicle/releases/ "Windows") (Move `gifsicle.exe` to main folder)
   - [Linux](https://www.lcdf.org/gifsicle/ "Linux")
 
 ## Usage 📝
 1. Modify the parameters in the `Config.json`:
 - `Image` :
-  - `URL` : **Direct** media URL. **[Can be any Image/Video format that `ffmpeg` supports](https://en.wikipedia.org/wiki/FFmpeg#Supported_formats "Supported ffmpeg formats")**.
+  - `URL / Path` : **Direct** media URL / Path. **[Can be any Image/Video format that `ffmpeg` supports](https://en.wikipedia.org/wiki/FFmpeg#Supported_formats "Supported ffmpeg formats")**.
   - `Max_Width` : Maximum single frame width. Height is relatively scaled. *Formula: Max Width ÷ 10*. **Default is 300**.
-  - `Crop` : Crops transparent pixels around the **every frame**. **Default is `false`**.
 - `Font` :
-  - `Type` : Defines font style used as caption text. **Default is `2`**.
-    - `1` : `Roboto Black` Android font. (otf)
-    - `2` : `Futura Condensed Extra Bold` (otf)
-    - `3` : `Futura BT Pro Condensed Extra Black` iOS font. (ttf)＊
+  - `Type` : Defines font style used as a caption text. **Default is `2`**.
+    - `1` : `Roboto Black` - Android font.
+    - `2` : `Futura Extra Black Condensed Regular` - iOS font.
   - `Size` : Font size in pixels. If value is `false`, then it's calculated by the formula given in the `Max Value`. **Default is `false`**.
 - `Settings` :
-  - `Delay` : Single frame display time (in milliseconds). **Default is 12**.
-  - `Saving_Method` : Image saving methods that *can* optimize its size. **Default is `1`**. **Doesn't support transparency**. <h style="font-size: 10px;">yet</h>
-    - `1` : `PIL`
-    - `2` : `ffmpeg`
-  - `Optimize` : Reduces GIF size by the `gifsicle` encoder.
+  - `Delay` : Single frame display time (in milliseconds). **Default is 5**.
+  - `Optimize_Factor` : GIF size reduction (`gifsicle` encoder). **Values Range: 0 → 3`**. **Default is `3`**.
   - `Logs` : **Default is `false`**. Displays:
-    - Image creation time
+    - Detailed information about image creation time
 - `Text` : Image caption text.
 - `Wrap_Factor` : Text-wrapping factor, used to break the words. **Is dependent of `Max_Width`**. (Unknown Formula) **Default is 2**.
 2. Open `Run.sh`
@@ -63,4 +58,6 @@ I was very unsatisfied that there was only a mobile app caption tool so I've dec
 	```
 4. Share Your image from `Captions` directory.
 
-＊ - TrueType fonts (ttf) are poorly resized and will look bad on small images.
+## Disclaimer ℹ️
+**All versions of this project have been made on `Windows 7 (64bit)`.
+[In case of problems create issue](https://github.com/kubinka0505/iFunny-Captions/issues "In case of problems create issue")**.

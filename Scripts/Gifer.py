@@ -1,5 +1,4 @@
 Caption = Image.open(Frame)
-if Config()["Image"]["Crop"] == True: Caption = Caption.crop(Caption.getbbox())
 
 Width = Pasted.size[0]
 Percentage = (Width / float(Caption.size[0]))
