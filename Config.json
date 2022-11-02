@@ -1,15 +1,14 @@
 {
 	"Text": {
 		"Content": "",
-		"Wrap_Factor": 3
+		"Additional_Wrap": 1,
+		"Emoji_Style": false
 	},
 	"Image": {
-		"URL / Path": "",
-		"Max_Width": 450
+		"URL / Path": ""
 	},
 	"Font": {
-		"Type": 2,
-		"Size": false
+		"Type": 2
 	},
 	"Settings": {
 		"Delay": 5,
@@ -22,6 +21,6 @@
 			"After_Hour": 22
 		},
 		"FFmpeg_Location": "",
-		"Logs": false
+		"Time_Logs": false
 	}
 }
