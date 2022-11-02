@@ -1,12 +1,3 @@
-def BBox(Picture: Image) -> Image:
-	"""Getting transparent pixels around the `Picture`."""
-	Array = np.array(Picture)[:, :, :3]
-	Map = np.any(Array != [255, 255, 255], axis = 2)
-	Coordinates = np.argwhere(Map)
-	#---#
-	y0, x0, y1, x1 = *np.min(Coordinates, axis = 0), *np.max(Coordinates, axis = 0)
-	return (x0, y0, x1 + 1, y1 + 1)
-
 def Trans_Paste(Background: Image, Foreground: Image) -> Image:
 	"""Pasting transparent `Foreground` to `Background`."""
 	FRGRND_TRNS = Image.new("RGBA", Background.size)
@@ -19,18 +10,18 @@ def Trans_Paste(Background: Image, Foreground: Image) -> Image:
 	IMG_RET = Image.alpha_composite(Background, FRGRND_TRNS)
 	return IMG_RET
 
-# GIF
-def Iterate(Picture: Image) -> Image:
-	"""`Picture` to iterate through."""
-	try:
-		Count = 0
-		while 1:
-			Picture.seek(Count)
-			Frame = Picture.copy()
-			yield Frame
-			Count += 1
-	except EOFError:
-		pass
+def __Get_Service(URL: str):
+	"""Converting raw URL to direct Image.
+
+	Supported Services:
+	- Tenor
+	- Giphy"""
+	if "tenor.com/view" in URL:
+		return get(URL).text.split('contentUrl')[1].split("content")[0][2:].split('"')[1].replace("\\u002F", "/")
+	if "giphy.com/gifs" in URL:
+		return "https://media"+str(get(URL).text).split("https://media")[2].split('"')[0]
+	else:
+		return URL
 
 def Margin(Picture: Image, Top: int, Color: ImageColor = "#FFF") -> Image:
 	"""Adds margin to an `Picture`."""

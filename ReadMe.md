@@ -9,30 +9,41 @@ I was very unsatisfied that there was only a mobile app caption tool so I've dec
 - [ ] In Development
 ---
 - [x] PNG Captions
-- [ ] GIF Captions＊
+- [x] GIF Captions
+- [ ] Offline support
+- [x] <code>Giphy</code> URLs support＊
+- [x] <code>Tenor</code> URLs support＊
+- [x] Optimization
+- [ ] GIF size reduction
+- [ ] Transparent GIF support
+- [ ] <i>([Showcase])("")</i>
 
-###### ＊<i>Will require a complete rewrite</i>
+＊ - Beta
 
 ## Requirements
 - <code>Python 3.5</code> +
 - <code>PIL</code>
-- <code>numpy</code>
 - <code>requests</code>
 - <code>textwrap</code>
+- <b><code>ffmpeg.exe >= 4.0.0</code></b> ([Download version based on Your OS, unzip and move <code>ffmpeg.exe</code> from <code>bin</code> to main folder](https://www.videohelp.com/software/ffmpeg/old-versions ""))
 
 ## Usage
 1. Modify the parameters in the <code>Config.json</code>:
-  - <code>URL</code> : <b>Direct</b> Image URL. <b style="color:red">Cannot be in animated format like <code>GIF</code> / <code>APNG</code></b>.
-    - Example: <code>https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111.jpg</code>
-  - <code>Font</code> : Font Configuration
-    - <code>Type</code> : Defines font style used as caption text.
-        - <code>1</code> : <code>Roboto Black</code>
-        - <code>2</code> : <code>Limerick Limerick Serial X-Bold Regular</code>
-	- <code>Size</code> : Font size in pixels. <b>Default is <code>72</code></b>.
-  - <code>Text</code> : Image caption text.
-  - <code>Wrap</code> : Text-wrap used to break the words. <b>Default is <code>12</code></b>.
-2. Open <code>＿init＿.py</code>
-3. Go to Your command prompt and type following:
+- <code>Image</code> :
+  - <code>URL</code> : <b>Direct</b> media URL. Can be any Image/Video format that <code>ffmpeg</code> supports.
+  - <code>Max_Width</code> : Maximum single frame width. Height is relatively scaled, same as font size. Formula: <code>Max Width ÷ 10</code>. <b>Default is <code>false</code></b>.
+  - <code>Crop</code> : Crops transparent pixels around the <b><u>every frame</u></b>. <b>Default is 300</b>.
+- <code>Font</code> :
+  - <code>Type</code> : Defines font style used as caption text. <b>Default is <code>2</code></b>.
+    - <code>1</code> : <code>Roboto Black</code> (otf)
+    - <code>2</code> : <code>Futura Condensed Extra Bold</code> (otf)
+    - <code>3</code> : <code>Futura BT Pro Condensed Extra Black</code> (ttf)
+- <code>Settings</code> :
+  - <code>Speed</code> : Single frame display time. (in milliseconds). <b>Default is 28</b>.
+- <code>Text</code> : Image caption text.
+- <code>Wrap</code> : Text-wrap, used to break the words. <b>Default is 14</b>.
+2. Open <code>Run.sh</code>
+3. ...or go to Your command prompt and type following:
 	```bash
 	git clone https://github.com/kubinka0505/iFunny-Captions
 	cd iFunny-Captions
