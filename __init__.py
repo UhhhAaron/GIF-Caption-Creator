@@ -5,6 +5,7 @@ generation, but this time You can input your
 own text and picture using `Config.json` file."""
 
 import os
+import re
 from json import load
 from requests import get
 from textwrap import wrap
@@ -18,10 +19,10 @@ from PIL import Image, ImageColor, ImageDraw, ImageFile, ImageFont
 __author__		= "kubinka0505"
 __copyright__	= __author__
 __credits__		= [__author__, "SuperCuber"]
-__version__		= "2.6"
-__date__		= "24.11.2020"
+__version__		= "2.7"
+__date__		= "06.12.2020"
 __status__		= "Development"
-__license__		= "GPL V3	"
+__license__		= "GPL V3"
 
 __FORMAT = "png"
 __SLASH = "\\" if system() == "Windows" else "/"
@@ -46,7 +47,7 @@ except:
 
 if Config["Settings"]["FFmpeg_Location"] == "":
 	for File in os.listdir(os.getcwd()):
-		if os.path.basename(File)[0:6] == "ffmpeg":
+		if os.path.basename(File)[:6] == "ffmpeg":
 			__FFMPEG = os.getcwd() + __SLASH + File
 else:
 	__FFMPEG = Config["Settings"]["FFmpeg_Location"]
@@ -78,18 +79,8 @@ print("Saving {0}...".format("PNG" if len(Frames) == 1 else "GIF"))
 
 # Image Name
 
-__NAME = "{0}_{1}.{2}".format(Config["Text"]["Content"].\
-	replace(" ", "_").\
-	replace("\\", "_").\
-	replace("/", "_").\
-	replace(":", "_").\
-	replace("*", "_").\
-	replace("?", "_").\
-	replace('"', "_").\
-	replace("<", "_").\
-	replace(">", "_").\
-	replace("|", "_").\
-	encode().decode("utf-8", errors = "strict")[0:192],
+__NAME = "{0}_{1}.{2}".format(
+	re.compile("[^a-zA-Z]").sub("_", Config["Text"]["Content"][:192]),\
 	Random_String(8),
 	"png" if len(Frames) == 1 else "gif"
 	)

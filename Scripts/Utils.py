@@ -18,7 +18,6 @@ def Get_Service(URL: str) -> str:
 	- Giphy.com
 	- Gfycat.com
 	- ImgFlip.com
-	- Pinterest
 	- Gifer.com
 	- GifImage.net
 	- BestAnimations.com

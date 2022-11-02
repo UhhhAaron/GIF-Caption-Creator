@@ -97,3 +97,15 @@ Initial release.
 - Delay system.
 ### Fixed 📝
 - `Delay` without `Optimize` option enabled. **(?)**
+
+## 2.7
+### Added ➕
+- Google Colab notebook.
+### Modified 🔁
+- Replaced `Roboto Black` to `Roboto Condensed Bold`.
+- Requirements.
+- `ReadMe` readability.
+### Removed 🚫
+- `Pinterest` support.
+### Fixed 📝
+- Issue where some GIFs couldn't be saved.
