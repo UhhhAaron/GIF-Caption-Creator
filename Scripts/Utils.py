@@ -10,13 +10,15 @@ def Trans_Paste(Background: Image, Foreground: Image) -> Image:
 	IMG_RET = Image.alpha_composite(Background, FRGRND_TRNS)
 	return IMG_RET
 
-def __Get_Service(URL: str):
+def Get_Service(URL: str):
 	'''"Converting" direct URL to direct Image.
 
 	Supported Services:
 	- Tenor
 	- Giphy
 	- Gfycat
+	- ImgFlip
+	- Pinterest
 	'''
 	if "tenor.com/view" in URL:
 		return get(URL).text.split('contentUrl')[1].split("content")[0][2:].split('"')[1].replace("\\u002F", "/")
@@ -24,6 +26,10 @@ def __Get_Service(URL: str):
 		return "https://media"+str(get(URL).text).split("https://media")[2].split('"')[0]
 	if "//gfycat.com/" in URL:
 		return get(URL).text.split("twitter:image")[1].split('"')[2].replace('size_restricted', 'small')
+	if "//imgflip.com/gif/" in URL:
+		return URL.replace("//", "//i.").replace("/gif", "")+".gif"
+	if "//www.pinterest." in URL:
+		return get(URL).text.split('"preload"')[1].split('href')[1].split('"')[1]
 	else:
 		return URL
 

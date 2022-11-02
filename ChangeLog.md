@@ -42,7 +42,7 @@ Initial release.
 - Transparent GIF support. (FFmpeg >= 4.2.0)
 - `Meta` section to `ReadMe`.
 - Font randomness.
-###Modified 🔁
+### Modified 🔁
 - Renamed `Captions` to `Images`.
 - Modified the vertical distance between text-wrapped phrases.
 - Replaced fonts to `OpenType` format. (`otf`)
@@ -56,3 +56,15 @@ Initial release.
 - `Saving_Method`:
   - `PIL` is now used for single-framed images. (ie. `PNG`, `JPG`)
   - `FFmpeg` is now used for GIFs.
+
+## 2.5
+### Added ➕
+- ImgFlip support.
+- Pinterest support.
+- `Lossy`.
+### Modified 🔁
+- ReadMe structure.
+- GIF Optimization structure.
+- Default `Delay` value.
+### Removed 🚫
+- Font randomness - Created empty file if font was type `0`.
