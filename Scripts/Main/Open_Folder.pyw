@@ -10,5 +10,4 @@ if Message_Box:
 	Command = 'start /max explorer /select,"{0}"'
 	if not system() == "Windows":
 		Command = 'nautilus "{0}"'
-
 	call(Command.format(__Name), shell = 1)

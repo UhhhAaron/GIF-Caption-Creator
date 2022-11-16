@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 __init__.pyw -p
+python3 __init__.pyw -t "" -i "" -p

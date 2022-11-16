@@ -7,7 +7,7 @@ __STA_TIME = __import__("time").time()
 import ctypes, io, math, os, re
 from sty import fg
 from auepa import Utils
-from requests import get
+from colour import Color
 from textwrap import wrap
 from platform import system
 from clipboard import paste
@@ -15,6 +15,7 @@ from subprocess import call
 from mutagen.id3 import ID3
 from time import sleep, time
 from string import printable
+from requests import Session
 from json import load, decoder
 from mutagen import File as mFile
 from requests.exceptions import *
@@ -34,8 +35,8 @@ from PIL import Image, ImageChops, ImageColor as IC, ImageDraw, ImageFile, Image
 __author__	= "kubinka0505"
 __copyright__ = __author__
 __credits__	= __author__, "SuperCuber"
-__version__	= "3.5"
-__date__	= "07.11.2021"
+__version__	= "3.6"
+__date__	= "02.01.2022"
 __status__	= "Mature"
 __license__	= "GPL V3"
 
@@ -57,9 +58,9 @@ except:
 
 open_ = lambda _open: open(__BaseDir + "/Scripts/Main/" + _open + ".pyw", encoding = "U8").read()
 
-exec(open_("Make_Folder"))
 exec(open_("../Utils"))
 exec(open_("Utils"))
+exec(open_("Make_Folder"))
 
 if system() == "Windows": os.system("title iFunny-Captions")
 exec(open_("Update/Check"))
@@ -139,6 +140,17 @@ if Config["Settings"]["Add_Metadata"]: exec(open_("../Metadata"))
 
 exec(open_("Frames_Removal"))
 
-print(Styles.OK + "Done!" + Styles.Reset)
+print(Styles.OK + "Done!")
+print("\n{2}Output file:{3}\n\t{4}Name{5}\t\t{0}{4}\n\tAbsolute path{5}\t{1}{3}".format(
+		__Name.split(os.sep)[-1],
+		__Name.replace(
+			os.path.expanduser("~"),
+			"%UserProfile%" if system() == "Windows" else "~"
+		),
+		Styles.OK, Styles.Reset,
+		Styles.Info, Styles.Meta_Info
+	)
+)
+
 if Config["Settings"]["Time_Logs"]:	exec(open_("Time_Logs"))
 if Config["Settings"]["Open_Folder"]: exec(open_("Open_Folder"))

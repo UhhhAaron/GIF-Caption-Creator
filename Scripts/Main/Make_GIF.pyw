@@ -2,17 +2,11 @@ try:
 	Frame_Size = Image.open(Frames[0]).size
 except IndexError:
 	rmtree(os.sep.join(__Folders) + os.sep + __Folder_Name)
-	raise SystemExit(Styles.Flaw + "\nNo frames were found - cache folder was wiped.\nPlease Re-run the program." + Styles.Reset)
+	raise SystemExit(Styles.Flaw + "\nNo frames were found - the cache subdirectory has been cleared.\nPlease Re-run the program." + Styles.Reset)
 
 print("Making {0}...".format("PNG" if len(Frames) == 1 else "GIF"))
 
 #---#
-
-if Config["Media"]["Image"]["Scale_Back"]:
-	Original_Image = Config["Media"]["Image"]["URL_or_Path"]
-	if not os.path.exists(Config["Media"]["Image"]["URL_or_Path"]):
-		Original_Image = get(Get_Service(Config["Media"]["Image"]["URL_or_Path"]), stream = 1).raw
-	Original_Image = Image.open(Original_Image).convert("RGBA")
 
 __MKE_TIME = time()
 for Frame in Frames:

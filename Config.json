@@ -25,8 +25,8 @@
 		},
 		"Video": {
 			"Duration": {
-				"Start": 0,
-				"End": 0
+				"Start": 0.0,
+				"End": 0.0
 			},
 			"Audio": {
 				"URL_or_Path": "",
@@ -38,6 +38,7 @@
 	},
 	"Settings": {
 		"Delay": 0,
+		"Loop_Count": 0,
 		"Caption_Design": {
 			"Percentage_Elements_Size": {
 				"Font": 10,
@@ -46,8 +47,8 @@
 				"Caption_Field_Height": 150
 			},
 			"Colors": {
-				"Text": "#000",
-				"Caption_Field": "#FFF"
+				"Text": "Black",
+				"Caption_Field": "White"
 			}
 		},
 		"Optimize": {
@@ -73,7 +74,8 @@
 			"Location": {
 				"FFmpeg": null,
 				"PNGQuant": null,
-				"Gifsicle": null
+				"Gifsicle": null,
+				"OxiPNG": null
 				},
 			"Logs": false
 		},
@@ -86,7 +88,7 @@
 				"Info": {
 					"Main": "#4AF",
 					"Meta": {
-						"1": "#808080",
+						"1": "Gray",
 						"2": "#B000FF"
 						}
 					}

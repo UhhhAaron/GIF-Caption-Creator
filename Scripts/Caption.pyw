@@ -8,6 +8,9 @@ if Config["Settings"]["Dark_Mode"]["Enabled"]:
 		__Fill = Config["Settings"]["Dark_Mode"]["Colors"]["Text"]
 		__Pasted_Color = Config["Settings"]["Dark_Mode"]["Colors"]["Caption_Field"]
 
+__Fill = Color(__Fill).hex_l
+__Pasted_Color = Color(__Pasted_Color).hex_l
+
 if not Config["Settings"]["Caption_Design"]["Percentage_Elements_Size"]["Caption_Field_Height"]:
 	raise SystemExit("{1}{0}{3}: {2}Incorrect design value - caption will not be created.{3}{4}".format(
 		ValueError.__name__, Styles.Warning, Styles.Error, Styles.Reset, __BEL
@@ -16,7 +19,7 @@ if not Config["Settings"]["Caption_Design"]["Percentage_Elements_Size"]["Caption
 
 Image_Base = Image.new(
 	"RGBA",
-	(1250, 3250),
+	(1250, 5000),
 	(0,) * 4
 )
 Draw = ImageDraw.Draw(Image_Base)

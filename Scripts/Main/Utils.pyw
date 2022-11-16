@@ -1,3 +1,14 @@
+session = Session()
+session.headers.update(
+	{
+		"User-Agent":
+		"Mozilla/5.0 (Windows NT 10.0; Win32; x32) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+	}
+)
+get = session.get
+
+#---#
+
 __Out_Dir = "Images"
 __Dynamic_Formats = ("apng", "gif", "gifv"), ("3gp", "flv", "mkv", "mov", "mp4", "webm")
 
@@ -21,7 +32,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = 1
 Image.warnings.filterwarnings("ignore", category = UserWarning)
 
 class Styles:
-	"""Colored Prints."""
+	"""Colored Prints"""
 	Error = _COLPC["Error"]
 	OK = _COLPC["OK"]
 	Flaw = _COLPC["Flaw"]
@@ -33,7 +44,7 @@ _CLS = Styles
 for Variable in list(vars(_CLS))[2:-2]:
 	exec('{0}.{1} = "{2}" if _COLP else ""'.format(
 		_CLS.__name__, Variable,
-		fg(*IC.getrgb(getattr(_CLS, Variable)))
+		fg(*IC.getrgb(Color(getattr(_CLS, Variable)).hex_l))
 		)
 	)
 

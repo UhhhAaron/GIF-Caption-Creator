@@ -1,12 +1,15 @@
 __Name = os.path.abspath("./{0}/{1}".format(
 	__Out_Dir,
 	"{0}_{1}.{2}".format(
-		normalize(
-			re.sub(
-				"[^\w\-_\. ]", "_",
-				Config["Text"]["Content"][:25]
+		re.compile(r"_{2,}").sub(
+			"_",
+			normalize(
+				re.sub(
+					"[^\w\-_\. ]", "_",
+					Config["Text"]["Content"]
+				)
 			)
-		).replace(".", ""),
+		).replace(".", "")[:25],
 		Random_String(8),
 		"png" if len(Frames) == 1 else "gif"
 		).replace(" ", "_")

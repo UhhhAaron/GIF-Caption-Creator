@@ -3,19 +3,25 @@ def Get_Service(URL: str) -> str:
 	
 	Commented statements are deprecated but may work.
 	Enable on your own responsibility"""
-	if "//tenor.com/view" in URL:			URL = get(URL).text.split("contentUrl")[1].replace("\\u002F", "/").split('"')[2]
-	if "//giphy.com/gifs" in URL:			URL = "https://media" + str(get(URL).text).split("https://media")[2].split('"')[0]
-	if "//gfycat.com/" in URL:				URL = get(URL).text.split("twitter:image")[1].split('"')[2].replace("size_restricted", "small")
-	if "//imgflip.com/gif/" in URL:			URL = URL.replace("//", "//i.").replace("/gif", "") + ".gif"
-	#if "//www.pinterest." in URL:			URL = get(URL).text.split('"preload"')[1].split("href")[1].split('"')[1]
-	#if "//gifer.com/" in URL:				URL = "https://i.gifer.com/{0}.gif".format(URL.split("/")[-1])
-	if "//gifimage.net/" in URL:			URL = get(URL).text.split("attachment_img")[1].split('"')[2]
-	if "//bestanimations.com/gifs/" in URL:	URL = get(URL).text.split("meta itemprop=")[3].split('"')[3]
-	if "//gif-finder.com/" in URL:			URL = get(URL).text.split("preload")[1].split('"')[5].replace(".mp4", ".gif")
-	if "//www.reactiongifs.us/" in URL:		URL = get(URL).text.split("entry-content")[1].split('"')[8]
-	#if "//replygif.net/" in URL:			URL = URL.replace("//replygif.net/", "//replygif.net/i/") + ".gif"
-	try: URL = URL.split("?")[0].split("#")[0]
-	except: pass
+	if "//" in URL:
+		if "tenor.com/view" in URL:				URL = get(URL).text.split("contentUrl")[1].replace("\\u002F", "/").split('"')[2]
+		if "giphy.com/gifs" in URL:				URL = "https://media" + str(get(URL).text).split("https://media")[2].split('"')[0]
+		if "gfycat.com/" in URL:				URL = get(URL).text.split("twitter:image")[1].split('"')[2].replace("size_restricted", "small")
+		if "imgflip.com/gif/" in URL:			URL = URL.replace("//", "//i.").replace("/gif", "") + ".gif"
+		#if "www.pinterest." in URL:			URL = get(URL).text.split('"preload"')[1].split("href")[1].split('"')[1]
+		#if "gifer.com/" in URL:				URL = "https://i.gifer.com/{0}.gif".format(URL.split("/")[-1])
+		if "gifimage.net/" in URL:				URL = get(URL).text.split("attachment_img")[1].split('"')[2]
+		if "bestanimations.com/gifs/" in URL:	URL = get(URL).text.split("meta itemprop=")[3].split('"')[3]
+		if "gif-finder.com/" in URL:			URL = get(URL).text.split("preload")[1].split('"')[5].replace(".mp4", ".gif")
+		if "www.reactiongifs.us/" in URL:		URL = get(URL).text.split("entry-content")[1].split('"')[8]
+		if "preview.redd.it/" in URL:			URL = "https://i.redd.it/" + URL.split("/")[3]
+		#if "replygif.net/" in URL:				URL = URL.replace("//replygif.net/", "//replygif.net/i/") + ".gif"
+		try:
+			URL = URL.split("?")[0].split("#")[0]
+		except:
+			pass
+	else:
+		return URL
 	return URL
 
 def Get_Emoji_Image(Name: str, Style: int = 5) -> Image.open:
@@ -61,7 +67,7 @@ def Margin(Picture: Image, Top: int, Color = "#FFF") -> Image:
 
 def Percentage(Whole: float, Percent: float) -> float:
 	"""Calculates `Percent` of `Whole`"""
-	return int((Percent * Whole) / 100)
+	return int((Percent * Whole) / 1E2)
 
 def Random_String(Length: int = 16) -> str:
 	"""Random string creation used in saving files"""
@@ -77,7 +83,7 @@ def Variable_Search(Variable: str = "Path", Delimiter: str = os.pathsep, Content
 	try:
 		Variables = os.environ[Variable]
 		for Variable in Variables.split(Delimiter):
-			if Content in Variable:
+			if Content.lower() in Variable.lower():
 				return Variable
 	except KeyError:
 		return None
@@ -109,8 +115,12 @@ def Grayscale(Path: os.path.abspath) -> bool:
 
 def Delay(Image_OBJ) -> int:
 	"""Pseudo-automatic calculation of the average GIF image delay"""
-	return int(math.ceil(math.sqrt(1000 / Image_OBJ.info["duration"])))
+	return int(math.ceil(math.sqrt(1E3 / Image_OBJ.info["duration"])))
 
 def ArgParseBool(Boolean: bool) -> str:
 	"""Converts default bool type to argument parser one"""
 	return "store_" + str(not bool(Boolean)).lower()
+
+def Get_Path(Path: str) -> os.path.abspath:
+	"""Absolute path getter with additional user and variables expansion"""
+	return os.path.abspath(os.path.expanduser(os.path.expandvars(Path)))

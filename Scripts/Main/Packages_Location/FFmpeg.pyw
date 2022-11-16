@@ -3,7 +3,7 @@ __FFmpeg_Error_1 = "\n{1}{0}{2} not found!".format(__FFmpeg, Styles.Warning, Sty
 __FFmpeg_Error_2 = "\n{0}Image will not be processed.{1}{2}".format(Styles.Error, Styles.Reset, __BEL)
 
 if system() == "Windows":
-	__FFmpeg = Variable_Search(Content = __FFmpeg.lower())
+	__FFmpeg = Variable_Search(Content = __FFmpeg)
 	if __FFmpeg:
 		if os.path.isfile(__FFmpeg):
 			pass
@@ -12,7 +12,7 @@ if system() == "Windows":
 				__FFmpeg, Styles.Meta_Info, Styles.Reset) + __FFmpeg_Error_2
 			)
 	else:
-		__FFmpeg = os.path.abspath(Config["Settings"]["Packages"]["Location"][__FFmpeg])
+		__FFmpeg = Get_Path(Config["Settings"]["Packages"]["Location"][__FFmpeg])
 		if os.path.isfile(__FFmpeg):
 			pass
 		else:

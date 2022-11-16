@@ -7,7 +7,7 @@
 <p align=center><img src=https://img.shields.io/tokei/lines/github/kubinka0505/iFunny-Captions?style=for-the-badge>　<img src=https://img.shields.io/github/languages/code-size/kubinka0505/iFunny-Captions?style=for-the-badge>　<img src=https://img.shields.io/codeclimate/maintainability/kubinka0505/iFunny-Captions?logo=code-climate&style=for-the-badge>　<img src=https://img.shields.io/codacy/grade/c8aeb5f42a38414da83d4156b546a4d1?logo=codacy&style=for-the-badge></p>
 
 ## Description 📝
-Pack of scripts providing widely customizable <a href=http://knowyourmeme.com/memes/gif-captions target="_blank">iFunny Captions</a> generation.
+Pack of scripts providing widely customizable [iFunny Captions](http://knowyourmeme.com/memes/gif-captions) generation.
 
 ## Capabilities 📈
 |  | Android App | iOS App | `iFunny-Captions` |
@@ -37,36 +37,37 @@ Pack of scripts providing widely customizable <a href=http://knowyourmeme.com/me
 - ✔️ GIF size reduction
 - ✔️ Custom fonts support<sup>2</sup> <sup>3</sup>
 - ✔️ Transparent GIF support
-- ✔️ <a href="http://youtube.com/watch?v=r8KTluI9Q5Q" target="_blank">Program Showcase</a> (<a href="http://youtube.com/watch?v=Uf-D2iEOvDU" target="_blank">Colab</a>)
+- ✔️ [Program Showcase](http://youtube.com/watch?v=r8KTluI9Q5Q) ([Colab](http://youtube.com/watch?v=Uf-D2iEOvDU))
 - ❌ Get smaller FFmpeg build
 - ✔️ ~~GUI Version~~ Colab Notebook
 - ✔️ Emoji support<sup>3</sup>
 - ✔️❌ Automatic text wrap
 
 <sup>1</sup> - May not work with some URLs. Please look at [supported GIF services](http://github.com/kubinka0505/iFunny-Captions#supported-gif-services-%EF%B8%8F) below.<br>
-<sup>2</sup> - Please look at <a href="http://github.com/kubinka0505/iFunny-Captions/wiki/Custom-Fonts">Custom Fonts</a> section in wiki.<br>
+<sup>2</sup> - Please look at [Custom Fonts](http://github.com/kubinka0505/iFunny-Captions/wiki/Custom-Fonts) section in wiki.<br>
 <sup>3</sup> - Problems with wrap height might occur.
 
 ## Requirements 📥
 Programs:
-- <a href="http://www.python.org/downloads" target="_blank">`Python >= 3.6`</a> 🐍
+- [`Python >= 3.6`](http://www.python.org/downloads) 🐍
 
 Modules:
-- <a href=http://github.com/python-pillow/Pillow target="_blank">`Pillow >= 5.1.0`</a> - Making images 🖼️
-- <a href=http://github.com/psf/requests target="_blank">`requests >= 2.12.5`</a> - URL fetching 🔗
-- <a href=http://github.com/carpedm20/emoji target="_blank">`emoji >= 0.4.5`</a> - Text to emoji support ✨
-- <a href=http://github.com/terryyin/clipboard target="_blank">`clipboard >= 0.0.4`</a> - Clipboard values handling 📋
-- <a href=http://github.com/feluxe/sty target="_blank">`sty >= 0.0.4`</a> - Colored prints 🎨
-- <a href=http://github.com/avian2/unidecode target="_blank">`unidecode`</a> - [Text normalization](http://en.wikipedia.org/wiki/Text_normalization#Techniques) ⚙️
-- <a href=http://github.com/kubinka0505/auepa target="_blank">`auepa`</a> - API for [EmojiPedia](http://emojipedia.org) 📕 fetching *(optional)*
+- [`Pillow >= 5.1.0`](http://github.com/python-pillow/Pillow) - Making images 🖼️
+- [`requests >= 2.13`](http://github.com/psf/requests) - URL fetching 🔗
+- [`emoji >= 0.4.5`](http://github.com/carpedm20/emoji) - Text to emoji support ✨
+- [`clipboard >= 0.0.4`](http://github.com/terryyin/clipboard) - Clipboard values handling 📋
+- [`sty >= 0.0.4`](https://github.com/vaab/colour) - Colored prints 🎨
+- [`colour >= 0.1.5`](http://github.com/colour) - Colored text values handling 🎨
+- [`unidecode`](http://github.com/avian2/unidecode) - [Text normalization](http://wikipedia.org/wiki/Text_normalization#Techniques) ⚙️
+- [`auepa`](http://github.com/kubinka0505/auepa) - API for [EmojiPedia](http://emojipedia.org) 📕 fetching *(optional)*
 
 Packages (bold links are **Windows** static executable binaries):
-- <a href=http://videohelp.com/software/ffmpeg/old-versions target="_blank">**`FFmpeg >= 4.2.0`**</a> - Since `PIL.ImageSequence.Iterator` messes up the frames colors.
-- <a href=http://eternallybored.org/misc/gifsicle/releases target="_blank">**`Gifsicle >= 1.92-2`**</a> - **Check after 64-bit if possible!** (<a href=http://github.com/kubinka0505/iFunny-Captions/wiki/Known-Issues-%F0%9F%93%9D%F0%9F%90%9B#4-scale_back-option-doesnt-work target="_blank">`Scale_Back`</a> option)
-- <a href=http://pngquant.org/#download target="_blank">**`PNGQuant >= 2.14`**</a> *(optional)*
-  - <a href=http://github.com/Guest126/pngquant/releases/>**`>= 2.16`**</a> **Windows build** - used courtesy of <a href="http://github.com/Guest126">@Guest126</a>
-- <a href=http://packages.debian.org/sid/python3-pip target="_blank">`Python3-PIP`</a><sup>1</sup>
-- <a href=http://packages.debian.org/sid/python3-tk target="_blank">`Python3-TK`</a><sup>1</sup>
+- [**`FFmpeg >= 4.2.0`**](http://videohelp.com/software/ffmpeg/old-versions) - Since `PIL.ImageSequence.Iterator` messes up the frames colors.
+- [**`Gifsicle >= 1.92-2`**](http://eternallybored.org/misc/gifsicle/releases) - **Check after 64-bit if possible!** ([`Scale_Back`](http://github.com/kubinka0505/iFunny-Captions/wiki/Known-Issues-%F0%9F%93%9D%F0%9F%90%9B#4-scale_back-option-doesnt-work) option)
+- [**`PNGQuant >= 2.14`**](http://pngquant.org/#download) *(optional)*
+- [**`OxiPNG >= 5.0.1`**](https://github.com/shssoichiro/oxipng/releases) *(optional)*
+- [`Python3-PIP`](http://packages.debian.org/sid/python3-pip)</a><sup>1</sup>
+- [`Python3-TK`](http://packages.debian.org/sid/python3-tk)</a><sup>1</sup>
 
 <sup>1</sup> - Required on Linux
 
@@ -82,9 +83,9 @@ sudo apt-get install git python3-apt python3-pip python3-tk ffmpeg pngquant gifs
 	git clone http://github.com/kubinka0505/iFunny-Captions
 	cd iFunny-Captions
 	```
-2. Install required modules  by inputting `pip install -r requirements.txt`
+2. Install required modules	 by inputting `pip install -r requirements.txt`
 3. Allocate [the required files](http://github.com/kubinka0505/iFunny-Captions#requirements-) to `PATH` system environment variable <s>or move them to repository folder</s>.
-4. Modify the parameters in the `Config.json`. <a href=http://github.com/kubinka0505/iFunny-Captions/wiki/Configuration-Documentation target="_blank">Its documentation can be found here</a>.
+4. Modify the parameters in the `Config.json`. [Its documentation can be found here](http://github.com/kubinka0505/iFunny-Captions/wiki/Configuration-Documentation).
 5. Open shell script file named `Run`. Supports positional arguments - type `python __init__.pyw -h` for more.
 6. Share Your image from the `Images` directory.
 
@@ -95,7 +96,7 @@ All versions of this project have been tested on:
 Windows | ― | 10 | 3.7.6 | 32, 64
 Linux | Ubuntu | LTS 21.04 | 3.8.10 | 64 |
 
-<a href=http://github.com/kubinka0505/iFunny-Captions/issues/new/choose target="_blank">**In case of problems create issue.**</a>
+[**In case of problems create issue.**](http://github.com/kubinka0505/iFunny-Captions/issues/new/choose)
 
 ---
 ### Supported GIF services 🗃️
@@ -103,30 +104,30 @@ Linux | Ubuntu | LTS 21.04 | 3.8.10 | 64 |
 In case if service is not working - copy its **direct non-static image URL**.
 <table>
   <thead>
-    <tr>
-      <th>Tenor</th>
-      <th>Giphy</th>
-      <th>Gfycat</th>
-      <th>Tumblr<br>(<code>GIFV</code>)</th>
-      <th>ImgFlip</th>
-      <th>GifImage</th>
-      <th>BestAnimations</th>
-      <th>GifFinder</th>
-      <th>ReactionGIFs</th>
-    </tr>
+	<tr>
+		<th>Tenor</th>
+		<th>Giphy</th>
+		<th>Gfycat</th>
+		<th>Tumblr<br>(<code>GIFV</code>)</th>
+		<th>ImgFlip</th>
+		<th>GifImage</th>
+		<th>BestAnimations</th>
+		<th>GifFinder</th>
+		<th>ReactionGIFs</th>
+	</tr>
   </thead>
   <tbody>
-    <tr align=center>
-      <td><a href=http://tenor.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Tenor.svg alt=Tenor width=65></a></td>
-      <td><a href=http://giphy.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Giphy.svg alt=Giphy width=65></a></td>
-      <td><a href=http://gfycat.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Gfycat.svg alt=Gfycat width=65></a></td>
-      <td><a href=http://tumblr.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Tumblr.svg alt=Tumblr width=65></a></td>
-      <td><a href=http://imgflip.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/ImgFlip.svg alt=ImgFlip width=65></a></td>
-      <td><a href=http://gifimage.net target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/GifImage.png alt=GifImage width=65></a></td>
-      <td><a href=http://bestanimations.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/BestAnimations.png alt=BestAnimations width=65></a></td>
-      <td><a href=http://gif-finder.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/GifFinder.png alt=GifFinder width=65></a></td>
-      <td><a href=http://reactiongifs.us target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/ReactionGIFs.svg alt=ReactionGIFs width=65></a></td>
-    </tr>
+	<tr align=center>
+		<td><a href=http://tenor.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Tenor.svg alt=Tenor width=65></a></td>
+		<td><a href=http://giphy.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Giphy.svg alt=Giphy width=65></a></td>
+		<td><a href=http://gfycat.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Gfycat.svg alt=Gfycat width=65></a></td>
+		<td><a href=http://tumblr.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Tumblr.svg alt=Tumblr width=65></a></td>
+		<td><a href=http://imgflip.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/ImgFlip.svg alt=ImgFlip width=65></a></td>
+		<td><a href=http://gifimage.net target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/GifImage.png alt=GifImage width=65></a></td>
+		<td><a href=http://bestanimations.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/BestAnimations.png alt=BestAnimations width=65></a></td>
+		<td><a href=http://gif-finder.com target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/GifFinder.png alt=GifFinder width=65></a></td>
+		<td><a href=http://reactiongifs.us target="_blank"><img src=https://raw.githubusercontent.com/kubinka0505/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/ReactionGIFs.svg alt=ReactionGIFs width=65></a></td>
+	</tr>
   </tbody>
 </table>
 

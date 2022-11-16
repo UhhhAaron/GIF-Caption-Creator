@@ -1,15 +1,9 @@
 __Audio = Config["Media"]["Video"]["Audio"]
-Audio_Data = ["flac", __Audio["Bitrate"]] # kb/s
-Video_Data = ["MP4", "libx264"]
+try: __Audio["URL_or_Path"] = get(__Audio["URL_or_Path"]).url
+except: __Audio["URL_or_Path"] = Get_Path(__Audio["URL_or_Path"])
 
-# Audio bitrate detection
-if __Audio["Bitrate"] <= 500:
-	#Audio_Data[0] = "vorbis"
-	if __Audio["Bitrate"] <= 640:
-		#Audio_Data[0] = "ac3"
-		if __Audio["Bitrate"] <= 384:
-			if __Audio["Bitrate"] <= 320:
-				Audio_Data[0] = "aac"
+Audio_Data = ["aac", str(__Audio["Bitrate"])]
+Video_Data = ["MP4", "libx264"]
 
 # Audio channels
 if __Audio["Channels"] != 2:
@@ -22,6 +16,8 @@ if __Audio["Channels"] != 2:
 	else: Audio_Data[2] += '"stereotools=mode=ms>rr" -ac 1'
 else:
 	Audio_Data.append("")
+
+Audio_Data = [str(Value) for Value in Audio_Data]
 
 #---#
 

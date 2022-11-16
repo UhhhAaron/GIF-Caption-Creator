@@ -272,10 +272,30 @@ Initial release.
 - Updates notification system.
 - Command Line Interface support for several values in `Config.json` keys.
 - More Command Line Interface arguments.
+### Modified 🔁
+- `Tenor` GIF image service.
+- Metadata addition system.
+- Removal of multiple underscores in filenames.
 ### Fixed 📝
 - Feature Request addition template.
 - Saving media with dots.
 - Default colored prints values.
+- Google Colab Notebook. ♾️
+
+## 3.6
+### Added ➕
+- `OxiPNG` support.
+- [User-Agent](https://wikipedia.org/wiki/User_agent).
+### Fixed 📝
+- Several bugs.
+- Batch files shortcuts.
+- Google Colab Notebook. ♾️
+- Status codes for `Utility/Get_Caption_Data.pyw`.
+- `Reddit` *preview* image service.
+- Output filepath information.
 ### Modified 🔁
-- `Tenor` GIF image service.
 - Metadata addition system.
+### Fixed 📝
+- Argument parser audio local filepath recognition.
+### Removed 🚫
+- Automatic audio codec detection.

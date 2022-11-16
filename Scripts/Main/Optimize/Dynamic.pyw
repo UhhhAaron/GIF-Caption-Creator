@@ -14,10 +14,11 @@ try:
 		)
 	)
 
-	os.system('{0} --careful --no-comments -b {1}"{2}" {3}'.format(
+	os.system('{0} --careful --no-comments -b {1}"{2}" -l{3} {4}'.format(
 		__Gifsicle,
 		"" if not Config["Settings"]["Delay"] else "-d{0} ".format(Config["Settings"]["Delay"]),
 		__Name,
+		str(Config["Settings"]["Loop_Count"]),
 		"-w" if not Config["Settings"]["Packages"]["Logs"] else "-i -cinfo -xinfo -sinfo -V"
 		)
 	)
@@ -35,8 +36,9 @@ if Config["Settings"]["Optimize"]["Enabled"]:
 		Styles.Reset
 		)
 	)
-	os.system('{0} -b -i -O8 --lossy={1} -k={2} "{3}" {4}'.format(
+	os.system('{0} -b -l{1} -i -O8 --lossy={2} -k={3} "{4}" {5}'.format(
 		__Gifsicle,
+		str(Config["Settings"]["Loop_Count"]),
 		Config["Settings"]["Optimize"]["Gifsicle"]["Lossy"],
 		Config["Settings"]["Optimize"]["Gifsicle"]["Colors"],
 		__Name,

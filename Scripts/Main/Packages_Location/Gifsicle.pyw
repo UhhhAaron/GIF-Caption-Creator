@@ -3,7 +3,7 @@ __Gifsicle_Error_1 = "\n{1}{0}{2} not found!".format(__Gifsicle, Styles.Warning,
 __Gifsicle_Error_2 = "\n{0}Image will not be processed.{1}{2}".format(Styles.Error, Styles.Reset, __BEL)
 
 if system() == "Windows":
-	__Gifsicle = Variable_Search(Content = __Gifsicle.lower())
+	__Gifsicle = Variable_Search(Content = __Gifsicle)
 	if __Gifsicle:
 		if os.path.isfile(__Gifsicle):
 			pass

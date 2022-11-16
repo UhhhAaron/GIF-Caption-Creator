@@ -1,1 +1,1 @@
-python __init__.pyw -p
+python __init__.pyw -t "" -i "" -p
