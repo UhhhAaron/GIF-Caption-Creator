@@ -5,7 +5,7 @@ generation, but this time You can input your
 own text and picture using `Config.json` file."""
 
 __STA_TIME = __import__("time").time()
-import re, os, io
+import re, os, io, ctypes
 from auepa import Utils
 from requests import get
 from textwrap import wrap
@@ -36,7 +36,8 @@ __BaseDir	= os.path.abspath(os.path.dirname(__file__))
 
 root = Tk()
 root.withdraw()
-root.iconbitmap("./Documents/Pictures/GUI/Icon.ico")
+try: root.iconbitmap("../Documents/Pictures/GUI/Icon.ico")
+except: pass
 
 exec(open("Scripts/Main/Make_Folder.pyw", encoding = "utf-8").read())
 
@@ -48,9 +49,14 @@ print("{0}Set up utils...".format(Styles.Reset))
 __STA_TIME = timedelta(seconds = time() - __STA_TIME)
 
 # Error Handling
+__Dynamic_Formats = "gif", "3gp", "flv", "mov", "mp4", "webm"
 exec(open("Scripts/Main/Error_Handler.pyw", encoding = "utf-8").read())
 
 # Getting Packages Location
+if not system() == "Windows":
+	import apt
+	cache = apt.Cache()
+
 exec(open("Scripts/Main/Packages_Location/FFmpeg.pyw", encoding = "utf-8").read())
 exec(open("Scripts/Main/Name_Folder.pyw", encoding = "utf-8").read())
 
@@ -89,16 +95,4 @@ __SAV_TIME = timedelta(seconds = time() - __SAV_TIME)
 
 exec(open("Scripts/Main/Frames_Removal.pyw", encoding = "utf-8").read())
 exec(open("Scripts/Main/Time_Logs.pyw", encoding = "utf-8").read())
-
-MessageBox = msgbox.showinfo(
-	title = "Success",
-	message = "Caption was successfully made in {0}.".format(__SUM_TIME[:-3])
-	)
-
-os.chdir("Images")
-Command = 'start /max explorer /select,"{0}"'
-if MessageBox == "ok":
-	if not system() == "Windows":
-		Command = 'nautilus "{0}"'
-
-	call(Command.format(__Name), shell = True)
+exec(open("Scripts/Main/Open_Folder.pyw", encoding = "utf-8").read())

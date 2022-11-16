@@ -21,7 +21,7 @@
 		"Type": 2
 	},
 	"Settings": {
-		"Delay": 2,
+		"Delay": 3,
 		"Percentage_Elements_Size": {
 			"Font": 10,
 			"Emojis": 67,
@@ -53,6 +53,7 @@
 			"Logs": false
 		},
 		"Colored_Prints": true,
+		"Open_Folder": true,
 		"Time_Logs": true,
 		"Sound": true
 		}

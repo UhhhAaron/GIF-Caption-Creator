@@ -1,5 +1,6 @@
 from os import *
 del open, system
+from platform import system
 from tkinter import Tk, messagebox as msgbox
 
 chdir(path.dirname(path.abspath(__file__)))
@@ -8,7 +9,8 @@ chdir(path.dirname(path.abspath(__file__)))
 
 root = Tk()
 root.withdraw()
-root.iconbitmap("../Documents/Pictures/GUI/Icon.ico")
+try: root.iconbitmap("../Documents/Pictures/GUI/Icon.ico")
+except: pass
 
 #---#
 

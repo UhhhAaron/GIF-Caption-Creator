@@ -60,7 +60,7 @@ Initial release.
 - Saving issues.
 ### Removed 🚫
 - `Crop`
-  - Could cause problems. (Furthermore, I don't think that anybody would use that)
+  - Could cause problems.
 - `Saving_Method`:
   - `PIL` is now used for single-framed images. (ie. `PNG`, `JPG`)
   - `FFmpeg` is now used for GIFs.
@@ -212,3 +212,13 @@ Initial release.
 ### Removed 🚫
 - `.gitignore`
 - Some Utility scripts.
+
+## 3.2
+### Added ➕
+- Linux (Ubuntu) support.
+- More selectable files formats.
+- Manual CLI handling for empty string values:
+  - Text
+  - Image
+### Fixed 📝
+- Fonts sorting bug.

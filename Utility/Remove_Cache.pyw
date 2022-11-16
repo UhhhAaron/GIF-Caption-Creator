@@ -1,10 +1,13 @@
 exec(open("__init__.py", encoding = "utf-8").read())
 from time import sleep
 from shutil import rmtree
-from platform import system
 
-__TEMP		= getenv("Temp") if system() == "Windows" else "/tmp"
-__Folder	= __TEMP + "/iFunny"
+#---#
+
+__TEMP = getenv("Temp") if system() == "Windows" else "/tmp"
+__Folder = __TEMP + "/iFunny"
+
+#---#
 
 try:
 	chmod(__Folder, 0o777)

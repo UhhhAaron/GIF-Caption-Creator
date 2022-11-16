@@ -14,18 +14,17 @@ Draw = ImageDraw.Draw(Image_Base)
 # Automatic Max Width
 
 Config["Image"]["Max_Width"] = 450
-#Config["Image"]["Max_Width"] = Image.open(Frames[0]).size[0]
 
 # Font Setup
 
 __Font_Size = Percentage(Config["Image"]["Max_Width"], Config["Settings"]["Percentage_Elements_Size"]["Font"])
+__Fonts = {Keys + 1: Values for Keys, Values in enumerate([File[:-4] for File in sorted(next(os.walk("Fonts"))[2], key = str) if File.endswith("otf")][::-1])}
 
-__Fonts = {Keys + 1: Values for Keys, Values in enumerate([File[:-4] for File in next(os.walk("Fonts"))[2] if File.endswith("otf")][::-1])}
 if not Config["Font"]["Type"]: Config["Font"]["Type"] = randint(1, len(__Fonts))
 __Path = "Fonts/{0}.otf".format(__Fonts[Config["Font"]["Type"]])
 Font = ImageFont.truetype(__Path, __Font_Size)
 
-# Emojisetup
+# Emoji Setup
 
 if Config["Font"]["Type"] == 1:
 	if Config["Emoji"]["API_Type"] == 1:
@@ -47,9 +46,39 @@ if Config["Font"]["Type"] == 2:
 		__Style = {"iOS": "9.3"}
 		Get_Emoji_Image = Get_Emoji_Image2
 
+
+if Config["Text"]["Content"] == "":
+	print("\n{0}Warning{3}: {1}No text given!{3}\nInput {2}URL{3} or {2}absolute path{3} to image.\n\nPerform {2}CTRL{3} + {2}C{3}, then {2}Enter{3} when done.\nPress {2}CTRL{3} + {2}Z{3}, then {2}Enter{3} to exit.\n\nText will be stripped. Multilne supported. ({2}Enter{3})\n{4}".format(
+		Styles.Yellow, Styles.LightRed, Styles.LightBlue, Styles.Reset, __BEL
+		)
+	)
+
+	try:
+		ctypes.windll.user32.FlashWindow(ctypes.windll.kernel32.GetConsoleWindow(), False)
+		ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
+	except AttributeError:
+		pass
+
+	Lines = []
+	while 1:
+		try:
+			Line = input("{0}> {1}".format(Styles.Green, Styles.Reset))
+			Lines.append(Line)
+		except KeyboardInterrupt:
+			break
+		except EOFError:
+			raise SystemExit("Exiting.")
+	if Lines:
+		Lines = "\n".join(Lines).replace("\n", ". ")
+		Config["Text"]["Content"] = Lines.rstrip(".") # You may put 2 dots in text instead
+	else:
+		raise SystemExit("No text inputted - exiting.")
+	print("Finishing text input{0}\n".format(" - Generating empty caption." if not Lines else "!"))
+	Config["Text"]["Content"] = "".join(Lines)
+
 Config["Text"]["Content"] = emojize(Config["Text"]["Content"], use_aliases = True)
 Config["Text"]["Content"] = Replace(Config["Text"]["Content"], Config["Text"]["Replacements"])
-Config["Text"]["Content"] = Config["Text"]["Content"].strip()
+Config["Text"]["Content"] = Config["Text"]["Content"].strip().strip("\n")
 if Config["Text"]["Content"] == "": Config["Text"]["Content"] = "あ"
 
 # Automatic Text Wrap
