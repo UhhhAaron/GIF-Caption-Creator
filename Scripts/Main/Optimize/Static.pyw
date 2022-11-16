@@ -1,12 +1,12 @@
 if len(Frames) == 1:
 	if Config["Settings"]["Optimize"]["Enabled"]:
-		exec(open("Scripts/Main/Packages_Location/PNGQuant.pyw", encoding = "utf-8").read())
+		exec(open("./Scripts/Main/Packages_Location/PNGQuant.pyw", encoding = "utf-8").read())
 		if __PNGQuant:
 			print("{4}Optimizing... {2}(PNGQuant, {1} colors, speed: {0}){3}".format(
 					Config["Settings"]["Optimize"]["PNGQuant"]["Speed"],
 					Config["Settings"]["Optimize"]["PNGQuant"]["Colors"],
-					Styles.DarkGray,
-					Styles.LightRed,
+					Styles.Meta_Info,
+					Styles.Flaw,
 					Styles.Reset
 					)
 				)

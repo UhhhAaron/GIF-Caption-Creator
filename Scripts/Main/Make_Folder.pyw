@@ -5,3 +5,5 @@ for Folder in __Folders:
 	try: os.mkdir(Folder)
 	except FileExistsError: pass
 	os.chdir(Folder)
+
+os.chdir(__BaseDir)

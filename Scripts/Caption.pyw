@@ -1,12 +1,18 @@
-# Image setup
+# Image Setup
 
 __Pasted_Color = (255,) * 3
 __Fill = (0,) * 3
 
 if Config["Settings"]["Dark_Mode"]["Enabled"]:
-	if int(strftime("%H")) >= Config["Settings"]["Dark Mode"]["After Hour"]:
+	if datetime.now().hour >= Config["Settings"]["Dark_Mode"]["After_Hour"]:
 		__Pasted_Color = (20,) * 3
 		__Fill = (160,) * 3
+
+if not Config["Settings"]["Percentage_Elements_Size"]["Caption_Field_Height"]:
+	raise SystemExit("{1}{0}{3}: {2}Incorrect design value - caption will not be created.{3}{4}".format(
+		ValueError.__name__, Styles.Warning, Styles.Error, Styles.Reset, __BEL
+		)
+	)
 
 Image_Base = Image.new("RGBA", (1250, 5000), (0,) * 4)
 Draw = ImageDraw.Draw(Image_Base)
@@ -49,7 +55,7 @@ if Config["Font"]["Type"] == 2:
 
 if Config["Text"]["Content"] == "":
 	print("\n{0}Warning{3}: {1}No text given!{3}\nInput {2}URL{3} or {2}absolute path{3} to image.\n\nPerform {2}CTRL{3} + {2}C{3}, then {2}Enter{3} when done.\nPress {2}CTRL{3} + {2}Z{3}, then {2}Enter{3} to exit.\n\nText will be stripped. Multilne supported. ({2}Enter{3})\n{4}".format(
-		Styles.Yellow, Styles.LightRed, Styles.LightBlue, Styles.Reset, __BEL
+		Styles.Warning, Styles.Flaw, Styles.Info, Styles.Reset, __BEL
 		)
 	)
 
@@ -62,7 +68,7 @@ if Config["Text"]["Content"] == "":
 	Lines = []
 	while 1:
 		try:
-			Line = input("{0}> {1}".format(Styles.Green, Styles.Reset))
+			Line = input("{0}> {1}".format(Styles.OK, Styles.Reset))
 			Lines.append(Line)
 		except KeyboardInterrupt:
 			break
@@ -70,7 +76,7 @@ if Config["Text"]["Content"] == "":
 			raise SystemExit("Exiting.")
 	if Lines:
 		Lines = "\n".join(Lines).replace("\n", ". ")
-		Config["Text"]["Content"] = Lines.rstrip(".") # You may put 2 dots in text instead
+		Config["Text"]["Content"] = Lines.rstrip(".") # You may input 2 dots in text instead
 	else:
 		raise SystemExit("No text inputted - exiting.")
 	print("Finishing text input{0}\n".format(" - Generating empty caption." if not Lines else "!"))

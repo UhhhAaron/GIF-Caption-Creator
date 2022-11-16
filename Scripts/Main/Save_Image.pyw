@@ -15,6 +15,14 @@ __Meta.__dict__ = {
 
 __SAV_TIME = time()
 if len(Frames) == 1:
-	GIF = Image.open(Frames[0])
-	GIF.save("Images/{0}".format(__Name),
-	pnginfo = __Meta)
+	PNG = Image.open(Frames[0])
+
+	if Scale_Back:
+		print(Styles.Meta_Info_2 + "Scaling back..." + Styles.Reset)
+		PNG = PNG.resize(Scale_Back, Image.ANTIALIAS)
+
+	PNG = PNG.convert("P")
+	PNG.save(
+		"Images/{0}".format(__Name),
+		pnginfo = __Meta
+	)

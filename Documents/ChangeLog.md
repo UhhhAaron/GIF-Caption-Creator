@@ -38,8 +38,8 @@ Initial release.
 
 ## 2.3
 ### Added ➕
-- `Optimization`. (`Gifsicle >= 1.9.2` encoder dependency)
-- Offline Support.
+- `Optimization`. (`Gifsicle` >= 1.9.2`)
+- Paths support.
 ### Modified 🔁
 - Text-wrapping system.
 
@@ -60,10 +60,9 @@ Initial release.
 - Saving issues.
 ### Removed 🚫
 - `Crop`
-  - Could cause problems.
 - `Saving_Method`:
-  - `PIL` is now used for single-framed images. (ie. `PNG`, `JPG`)
-  - `FFmpeg` is now used for GIFs.
+  - `PIL` is now used for static images. (i.e. `PNG`, `JPG`)
+  - `FFmpeg` for dynamic.
 
 ## 2.5
 ### Added ➕
@@ -73,10 +72,10 @@ Initial release.
 - `Lossy`.
 ### Modified 🔁
 - `ReadMe` structure.
-- GIF Optimization structure.
+- GIF Optimization.
 - Default `Delay` value.
 ### Removed 🚫
-- Font randomness - Created an empty file if the font was type `0` and if it returned `Roboto Black`.
+- Font randomness.
 
 ## 2.6
 ### Added ➕
@@ -89,20 +88,18 @@ Initial release.
   - `ReactionGifs.us`
   - `ReplyGIF.net`
 - `Max_Width` and `Wrap_Factor` table.
-- New badges.
-- Dark Mode.
-- HTTP Error handling.
+- `Dark_Mode`.
+- URL Error handling.
 ### Modified 🔁
 - `Max_Width` system.
-- GIF Optimization structure.
+- GIF Optimization.
   - `Factor` is now `3`. (in code)
   - `Factor` has been replaced with `Enabled`.
 - Text-wrapping system.
 - Caption Field default size.
-- Image Comparisons.
-- Changed Banner format from `PNG` to `SVG`.
+- Image comparisons.
 - Configuration keys & values order.
-- Delay system.
+- `Delay` system.
 
 ## 2.7
 ### Added ➕
@@ -164,14 +161,14 @@ Initial release.
 - `emojicdn` API style selection.
 ### Modified 🔁
 - Notebook prints. ♾️
-- Relicensed program to GPL V3.
+- Re-licensed program to GPL V3.
 - Replaced banner with the old one, but with `SVG` format.
 - Changed files extension from `py` to `pyw`.
 ### Fixed 📝
-- Saving one-framed images to GIF instead of PNG. ♾️
+- Saving static images to GIF instead of PNG. ♾️
 - Font type. ♾️
 - Capitalized acute accent letters rendering.
-- Lower diactric hooks letters rendering.
+- Lower diacritic hooks letters rendering.
 - `auepa` emoji rendering.
 - Emojis rendering.
 - Font randomness.
@@ -182,7 +179,7 @@ Initial release.
 - `Documents/iFunny-Captions.svg`
 ### Modified 🔁
 - Notebook banner. ♾️
-- Switched to percentage calculation system.
+- Caption size calculation system.
 ### Fixed 📝
 - Some notebook bugs. ♾️
 ### Removed 🚫
@@ -191,7 +188,7 @@ Initial release.
 ## 3.0
 ### Added ➕
 - `.gitignore`
-- `FFmpeg Locations` exception handling.
+- `FFmpeg` location exception handling.
 - Support for media streams.
 ### Fixed 📝
 - Non-URL files import.
@@ -222,3 +219,22 @@ Initial release.
   - Image
 ### Fixed 📝
 - Fonts sorting bug.
+
+## Re-release 3.2
+### Added ➕
+- More CLI messages.
+- Program showcase.
+### Fixed 📝
+- Frames copying interruption.
+- Frames extraction interruption.
+
+## 3.3
+### Added ➕
+- Further optimization for grayscale images.
+- More Command Line Interface arguments.
+- Customizable `Colored_Prints` colors.
+- `Scale_Back`.
+### Fixed 📝
+- Several bugs.
+- `Open_Folder`.
+- Google Colab Notebook. ♾️

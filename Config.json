@@ -15,13 +15,14 @@
 		"Version_if_2": false
 	},
 	"Image": {
-		"URL_or_Path": ""
+		"URL_or_Path": "",
+		"Scale_Back": false
 	},
 	"Font": {
 		"Type": 2
 	},
 	"Settings": {
-		"Delay": 3,
+		"Delay": 2,
 		"Percentage_Elements_Size": {
 			"Font": 10,
 			"Emojis": 67,
@@ -52,7 +53,21 @@
 				},
 			"Logs": false
 		},
-		"Colored_Prints": true,
+		"Colored_Prints": {
+			"Enabled": true,
+			"Colors": {
+				"Error": "#C50F1F",
+				"OK": "#16C60C",
+				"Flaw": "#E74856",
+				"Info": {
+					"Main": "#4099DD",
+					"Meta": {
+						"1": "#808080",
+						"2": "#B000FF"
+						}
+					}
+				}
+			},
 		"Open_Folder": true,
 		"Time_Logs": true,
 		"Sound": true
