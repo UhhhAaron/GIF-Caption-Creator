@@ -1,16 +1,8 @@
 def Get_Service(URL: str) -> str:
-	"""Scraping main Image URL from page.
-
-	Supported Services:
-	- Tenor.com
-	- Giphy.com
-	- Gfycat.com
-	- ImgFlip.com
-	- GifImage.net
-	- BestAnimations.com
-	- Gif-Finder.com
-	- ReactionGifs.us
-	"""
+	"""Scraping main Image URL from various pages.
+	
+	Commented statements are deprecated but may work.
+	Enable on your own responsibility."""
 	if "//tenor.com/view" in URL:			URL = get(URL).text.split("contentUrl")[1].split("content")[0][2:].split('"')[1].replace("\\u002F", "/")
 	if "//giphy.com/gifs" in URL:			URL = "https://media" + str(get(URL).text).split("https://media")[2].split('"')[0]
 	if "//gfycat.com/" in URL:				URL = get(URL).text.split("twitter:image")[1].split('"')[2].replace("size_restricted", "small")
@@ -23,7 +15,7 @@ def Get_Service(URL: str) -> str:
 	if "//www.reactiongifs.us/" in URL:		URL = get(URL).text.split("entry-content")[1].split('"')[8]
 	#if "//replygif.net/" in URL:			URL = URL.replace("//replygif.net/", "//replygif.net/i/") + ".gif"
 	try:
-		URL = URL.split("?")[0]
+		URL = URL.split("?")[0].split("#")[0]
 	except:
 		pass
 	return URL
@@ -33,10 +25,10 @@ def Get_Emoji_Image(Name: str, Style: int = 5) -> Image.open:
 	Styles = {
 	1: 'apple', 2: 'google', 3: 'microsoft', 4: 'samsung',
 	5: 'whatsapp', 6: 'twitter', 7: 'facebook',
-	8: 'joypixels', 9: 'openmoji',  10: 'emojidex',
+	8: 'joypixels', 9: 'openmoji',	10: 'emojidex',
 	11: 'lg', 12: 'htc', 13: 'mozilla'
 	}
-	# Styles = {Keys: Values for Keys, Values in enumerate([get("https://github.com/benborgers/emojicdn").text.split("<ul>")[2].split("<li><code>")[x+1].split("</code></li>\n")[0] for x in range(13)])}
+	# Styles = {Keys: Values for Keys, Values in enumerate([get("https://github.com/benborgers/emojicdn").text.split("<ul>")[2].split("<li><code>")[x + 1].split("</code></li>\n")[0] for x in range(13)])}
 	#---#
 	Emoji_Image = Image.open(get(
 		"https://emojicdn.elk.sh/{0}?style={1}".format(
@@ -62,7 +54,7 @@ def Get_Emoji_Image2(Name: str, Info: dict) -> Image.open:
 	return Image.open(io.BytesIO(ImageIO.read()))
 
 def Margin(Picture: Image, Top: int, Color: ImageColor = "#FFF") -> Image:
-	"""Adds margin to an `Picture`."""
+	"""Adds margin to the `Picture`."""
 	Width, Height = Picture.size
 	Height = Height + Top + 0
 	#---#
@@ -79,7 +71,15 @@ def Random_String(Length: int = 16) -> str:
 	return "".join(choice(printable[0:62]) for String in range(Length))
 
 def Replace(String: str, Phrases: dict):
-    pattern = re.compile("|".join([re.escape(x) for x in sorted(Phrases, key=len, reverse=True)]), flags = re.DOTALL)
-    return pattern.sub(lambda x: Phrases[x.group(0)], String)
+	"""Batch string replacement."""
+	pattern = re.compile("|".join([re.escape(x) for x in sorted(Phrases, key = len, reverse = True)]), flags = re.DOTALL)
+	return pattern.sub(lambda x: Phrases[x.group(0)], String)
+
+def Variable_Search(Variable: str = "Path", Delimiter: str = ";", Content: str = "") -> str:
+	"""Searches for `Content` in `Variable` environment variable."""
+	Variables = os.environ[Variable]
+	for Variable in Variables.split(Delimiter):
+		if Content in Variable:
+			return Variable
 
 os.system("")

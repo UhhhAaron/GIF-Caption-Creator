@@ -1,51 +1,59 @@
 {
 	"Text": {
 		"Content": "",
-		"Additional Wrap": 3,
+		"Additional_Wrap": 3,
 		"Kerning": -1,
 		"Replacements": {
-			"{nl}":	"\n",
-			"''":	"\""
+			"''":	"\"",
+			"{bs}":	"\\"
 			}
 		},
 	"Emoji": {
-		"API Type": 1,
-		"Style if 1": false,
-		"Vendor if 2": false,
-		"Version if 2": false
+		"API_Type": 1,
+		"Style_if_1": false,
+		"Vendor_if_2": false,
+		"Version_if_2": false
 	},
 	"Image": {
-		"URL / Path": ""
+		"URL_or_Path": ""
 	},
 	"Font": {
 		"Type": 2
 	},
 	"Settings": {
-		"Delay": 5,
-		"Percentage Elements Size": {
+		"Delay": 2,
+		"Percentage_Elements_Size": {
 			"Font": 10,
-			"Emojis": 67.5,
-			"Leading": 125,
-			"Caption Field Height": 200,
-			"Emoji Height Spacing": 25
+			"Emojis": 67,
+			"Leading": 112,
+			"Caption_Field_Height": 150,
+			"Emoji_Height_Spacing": 25
 		},
 		"Optimize": {
 			"Enabled": true,
-			"Lossy": 200
+			"PNGQuant": {
+				"Speed": 1,
+				"Colors": 256
+			},
+			"Gifsicle": {
+				"Lossy": 200,
+				"Colors": 256
+			}
 		},
-		"Dark Mode": {
+		"Dark_Mode": {
 			"Enabled": false,
-			"After Hour": 22
+			"After_Hour": 22
 		},
 		"Packages": {
 			"Location": {
 				"FFmpeg": null,
+				"PNGQuant": null,
 				"Gifsicle": null
 				},
-			"Logs": true
+			"Logs": false
 		},
-		"Colored Prints": true,
-		"Time Logs": true,
+		"Colored_Prints": true,
+		"Time_Logs": true,
 		"Sound": true
 		}
 }

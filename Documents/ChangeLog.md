@@ -38,7 +38,7 @@ Initial release.
 
 ## 2.3
 ### Added ➕
-- `Optimization`. (`gifsicle >= 1.9.2` encoder dependency)
+- `Optimization`. (`Gifsicle >= 1.9.2` encoder dependency)
 - Offline Support.
 ### Modified 🔁
 - Text-wrapping system.
@@ -193,8 +193,22 @@ Initial release.
 - `.gitignore`
 - `FFmpeg Locations` exception handling.
 - Support for media streams.
-### Modified 🔁
-- Removed spaces from `Config.json` keys.
 ### Fixed 📝
 - Non-URL files import.
 - Cache system.
+
+## 3.1
+### Added ➕
+- More user interaction.
+### Modified 🔁
+- `Colored_Prints` Values.
+- Program files structure.
+- Cache folder.
+- Removed spaces from `Config.json` keys.
+- `Percentage_Elements_Size` default values.
+- Requirements.
+### Fixed 📝
+- Several bugs.
+### Removed 🚫
+- `.gitignore`
+- Some Utility scripts.
