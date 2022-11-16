@@ -238,3 +238,25 @@ Initial release.
 - Several bugs.
 - `Open_Folder`.
 - Google Colab Notebook. ♾️
+
+## 3.4
+### Added ➕
+- More Command Line Interface arguments.
+- Customizable caption colors.
+- Support for captions with given audio as `MP4` videos.
+- `Watermark` option.
+### Fixed 📝
+- Default `Dark_Mode`.
+- First frame of transparent dynamic images overlapping. (FFmpeg >= 4.3.2)
+- Grainy static images rendering.
+- Grayscale optimization.
+- Static images optimization.
+- Saving media with dots.
+- Increased documentation readability.
+### Modified 🔁
+- Packages locating system.
+- Popup is not hidden at default.
+- Character rendering system.
+- Metadata system.
+### Removed 🚫
+- `Emoji_Height_Spacing`

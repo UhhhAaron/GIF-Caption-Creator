@@ -1,10 +1,11 @@
 from os import *
-del open, system
-from platform import system
+del open
+from platform import system as system_
 from tkinter import Tk, filedialog as fd, messagebox as msgbox
 
-chdir(path.dirname(path.abspath(__file__)))
-Icon = "../Documents/Pictures/GUI/Icon.ico"
+try: chdir(path.dirname(path.abspath(__file__)))
+except: pass
+Icon = "../Documents/Pictures/Icons/GUI/Icon.ico"
 
 #---#
 

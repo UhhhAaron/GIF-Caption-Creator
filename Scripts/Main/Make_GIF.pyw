@@ -24,7 +24,7 @@ __MKE_TIME = timedelta(seconds = time() - __MKE_TIME)
 #---#
 
 Scale_Back = 0
-if Config["Image"]["Scale_Back"]:
+if Config["Media"]["Image"]["Scale_Back"]:
 	Scale_Back_ = Captionized.size
 
 	SB_Width = Frame_Size[0]

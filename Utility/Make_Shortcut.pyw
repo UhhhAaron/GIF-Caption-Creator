@@ -1,4 +1,4 @@
-exec(open("__init__.py", encoding = "utf-8").read())
+exec(open("__init__.pyw", encoding = "utf-8").read())
 from pyshortcuts import make_shortcut
 
 Icon_HQ = path.abspath(Icon.replace(

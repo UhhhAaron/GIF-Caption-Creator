@@ -1,3 +1,4 @@
+__Out_Dir = "Images"
 __Dynamic_Formats = ("apng", "gif", "gifv"), ("3gp", "flv", "mkv", "mov", "mp4", "webm")
 
 try:
@@ -15,8 +16,8 @@ _COLP = _COLP["Enabled"]
 
 #---#
 
-Image.MAX_IMAGE_PIXELS = 1000000000                                                                                              
-ImageFile.LOAD_TRUNCATED_IMAGES = True
+Image.MAX_IMAGE_PIXELS = 1_000_000_000                                                                                              
+ImageFile.LOAD_TRUNCATED_IMAGES = 1
 Image.warnings.filterwarnings("ignore", category = UserWarning)
 
 class Styles:
@@ -41,7 +42,7 @@ _CLS.Reset = "\033[0m" if _COLP else ""
 
 #---#
 
-try: os.mkdir("Images")
+try: os.mkdir(__Out_Dir)
 except FileExistsError: pass
 
 os.system("")

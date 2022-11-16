@@ -26,13 +26,13 @@ def Get_Emoji_Image(Name: str, Style: int = 5) -> Image.open:
 		8: 'joypixels', 9: 'openmoji',	10: 'emojidex',
 		11: 'lg', 12: 'htc', 13: 'mozilla'
 	}
-	# Styles = {Keys: Values for Keys, Values in enumerate([get("https://github.com/benborgers/emojicdn").text.split("<ul>")[2].split("<li><code>")[x + 1].split("</code></li>\n")[0] for x in range(13)])}
+	# Styles = {Keys: Values for Keys, Values in enumerate([get("http://github.com/benborgers/emojicdn").text.split("<ul>")[2].split("<li><code>")[x + 1].split("</code></li>\n")[0] for x in range(13)])}
 	#---#
 	Emoji_Image = Image.open(get(
 		"https://emojicdn.elk.sh/{0}?style={1}".format(
-			quote_plus(emojize(Name, use_aliases = True)),
+			quote_plus(emojize(Name, use_aliases = 1)),
 			str(Styles[Style]).lower()
-			), stream = True
+			), stream = 1
 		).raw
 	).convert("RGBA")
 	#---#
@@ -70,20 +70,23 @@ def Random_String(Length: int = 16) -> str:
 
 def Replace(String: str, Phrases: dict):
 	"""Batch string replacement"""
-	pattern = re.compile("|".join([re.escape(x) for x in sorted(Phrases, key = len, reverse = True)]), flags = re.DOTALL)
+	pattern = re.compile("|".join([re.escape(x) for x in sorted(Phrases, key = len, reverse = 1)]), flags = re.DOTALL)
 	return pattern.sub(lambda x: Phrases[x.group(0)], String)
 
 def Variable_Search(Variable: str = "Path", Delimiter: str = os.pathsep, Content: str = "") -> str:
 	"""Searches for `Content` in `Variable` environment variable"""
-	Variables = os.environ[Variable]
-	for Variable in Variables.split(Delimiter):
-		if Content in Variable:
-			return Variable
+	try:
+		Variables = os.environ[Variable]
+		for Variable in Variables.split(Delimiter):
+			if Content in Variable:
+				return Variable
+	except KeyError:
+		return None
 
 def Remove_Pictures(Directory: os.path.abspath = ".", Format: str = "png") -> os.remove:
 	for Frame in next(os.walk(os.path.abspath(Directory)))[2]:
 		if Frame.endswith(Format):
-			os.chmod(Frame, 0o777)
+			os.chmod(Frame, 511)
 			os.remove(Frame)
 	return
 
@@ -95,12 +98,21 @@ def File_Size(Bytes: float) -> str:
 	return "{0} {1}".format(round(Bytes, 2), Unit)
 
 def Grayscale(Path: os.path.abspath) -> bool:
-	"""Checks if image can be converted
-	into grayscale color palette"""
-	Picture = Image.open(Path)
-	if Picture.mode not in ("L", "RGB"):
-		return False
+	"""Checks if image can be converted into a grayscale color palette"""
+	Picture = Image.open(Path).convert("RGB")
+
+	RGB = Picture.split()
 	for Color in range(1, 2 + 1):
 		if ImageChops.difference(RGB[0], RGB[Color]).getextrema()[1] != 0:
-			return False
-	return True
+			return 0
+	return 1
+
+def Average_FPS(Image_OBJ):
+	Image_OBJ.seek(0)
+	Frames = 0
+	Duration = Image_OBJ.info["duration"]
+	while 1:
+		try:
+			Frames += 1
+			Image_OBJ.seek(Image_OBJ.tell() + 1)
+		except EOFError: return Frames // Duration

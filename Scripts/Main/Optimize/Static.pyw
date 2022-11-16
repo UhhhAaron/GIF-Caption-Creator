@@ -10,10 +10,12 @@ if len(Frames) == 1:
 					Styles.Reset
 					)
 				)
-			os.system('{0} {2} --ext .png -f -s {1} --quality 100 --skip-if-larger "Images/{3}" {4}'.format(
+
+			os.system('{0} {2} --ext .png -f -s {1} --skip-if-larger --nofs "{3}" {4}'.format(
 				__PNGQuant,
 				Config["Settings"]["Optimize"]["PNGQuant"]["Speed"],
 				Config["Settings"]["Optimize"]["PNGQuant"]["Colors"],
 				__Name,
 				"" if not Config["Settings"]["Packages"]["Logs"] else "-v"
-			))
+				)
+			)

@@ -1,16 +1,16 @@
-exec(open("__init__.py", encoding = "utf-8").read())
+exec(open("__init__.pyw", encoding = "utf-8").read())
 from time import sleep
 from shutil import rmtree
 
 #---#
 
-__TEMP = getenv("Temp") if system() == "Windows" else "/tmp"
+__TEMP = getenv("Temp") if system_() == "Windows" else "/tmp"
 __Folder = __TEMP + "/iFunny"
 
 #---#
 
 try:
-	chmod(__Folder, 0o777)
+	chmod(__Folder, 511)
 
 	Files = sum(len(Files) for _, _, Files in walk(__Folder))
 	Files_Size = File_Size(Folder_Size())

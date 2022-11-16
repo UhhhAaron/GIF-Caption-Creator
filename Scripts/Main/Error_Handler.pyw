@@ -1,10 +1,14 @@
 Clipboard_Warning = ""
-if Config["Image"]["URL_or_Path"] == "clipboard":
-	Clipboard_Warning = "{0}Warning{2}: {1}clipboard{2} is enabled.".format(Styles.Warning, Styles.Meta_Info, Styles.Reset)
-	Config["Image"]["URL_or_Path"] = paste()
+if Config["Media"]["Image"]["URL_or_Path"] == "clipboard":
+	Clipboard_Warning = "{0}Warning{2}: {1}clipboard{2} is enabled.".format(
+		Styles.Warning, Styles.Meta_Info, Styles.Reset
+	)
+	Config["Media"]["Image"]["URL_or_Path"] = paste()
 
-if not Config["Image"]["URL_or_Path"]:
-	Config["Image"]["URL_or_Path"] = fd.askopenfilename(
+#---#
+
+if not Config["Media"]["Image"]["URL_or_Path"]:
+	Config["Media"]["Image"]["URL_or_Path"] = fd.askopenfilename(
 		title = "Select visual media file",
 		initialdir = "..",
 		filetypes = [
@@ -14,14 +18,14 @@ if not Config["Image"]["URL_or_Path"]:
 			],
 		defaultextension = ".gif"
 		)
-	if not Config["Image"]["URL_or_Path"]:
+	if not Config["Media"]["Image"]["URL_or_Path"]:
 		print("\n{0}Warning{3}: {1}No URL / File given!{3}\nInput {2}URL{3} or {2}absolute path{3} to image.\n\nPerform {2}CTRL{3} + {2}C{3}, then {2}Enter{3} when done.\nPress {2}CTRL{3} + {2}Z{3}, then {2}Enter{3} to exit.\n\nText will be stripped. Multilne supported. ({2}Enter{3})\n{4}".format(
 			Styles.Warning, Styles.Flaw, Styles.Info, Styles.Reset, __BEL
 			)
 		)
 
 		try:
-			ctypes.windll.user32.FlashWindow(ctypes.windll.kernel32.GetConsoleWindow(), False)
+			ctypes.windll.user32.FlashWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 			ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 1)
 		except AttributeError:
 			pass
@@ -38,7 +42,7 @@ if not Config["Image"]["URL_or_Path"]:
 				break
 		if Lines:
 			Lines = "".join(Lines).replace("\n", "")
-			Config["Image"]["URL_or_Path"] = Lines
+			Config["Media"]["Image"]["URL_or_Path"] = Lines
 			if Lines == "exit":
 				raise SystemExit("Exiting.")
 		else:
@@ -49,7 +53,7 @@ if not Config["Image"]["URL_or_Path"]:
 
 try:
 	try:
-		with get(Get_Service(Config["Image"]["URL_or_Path"])) as Site:
+		with get(Get_Service(Config["Media"]["Image"]["URL_or_Path"])) as Site:
 			if not Site.ok:
 				raise SystemExit("\nURL returns status code {2}{0}{3} ({2}{1}{3}).\n{2}Image will not be processed.{3}{4}".format(
 					Site.status_code, Site.reason.title(),
@@ -57,12 +61,14 @@ try:
 					)
 				)
 	except ConnectionError:
-		raise SystemExit("{0}No internet connection!{1}{2}".format(Styles.Error, Styles.Reset, __BEL))
+		raise SystemExit("{0}No internet connection!{1}{2}".format(
+			Styles.Error, Styles.Reset, __BEL
+			)
+		)
 except MissingSchema:
 	raise SystemExit('\n{1}Invalid URL{4}! {2}("{0}"){3}\nImage will not be processed.{4}\n{5}{6}'.format(
-		"None" if not Get_Service(Config["Image"]["URL_or_Path"]) else Get_Service(Config["Image"]["URL_or_Path"]),
+		Get_Service(Config["Media"]["Image"]["URL_or_Path"]) if Get_Service(Config["Media"]["Image"]["URL_or_Path"]) else "None"),
 		Styles.Warning, Styles.Meta_Info, Styles.Error, Styles.Reset, Clipboard_Warning, __BEL
-		)
 	)
 except InvalidSchema:
 	pass
