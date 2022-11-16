@@ -5,5 +5,5 @@ Percentage_ = (Width / float(Caption.size[0]))
 Height_Size = int((float(Caption.size[1]) * float(Percentage_)))
 Caption = Caption.resize((Width, Height_Size))
 
-Captionized = Margin(Caption, Pasted.size[1])
-Captionized.paste(Pasted)
+Captionized = Margin(Caption, Pasted.size[1]); Captionized.paste(Pasted)
+if args.no_caption: Captionized = Caption

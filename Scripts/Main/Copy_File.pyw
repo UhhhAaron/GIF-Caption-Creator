@@ -1,11 +1,8 @@
 __FilesToCopy = [File for File in next(os.walk("."))[2] if File.endswith("png")]
 
-print("{2}Copying frame{0} to main directory... {1}{2}".format(
+print("{2}Copying {1}{2}frame{0} to main directory...".format(
 	"" if len(__FilesToCopy) < 2 else "s",
-	"{1}({0})".format(
-		len(__FilesToCopy),
-		Styles.Meta_Info
-	) if len(__FilesToCopy) > 1 else "",
+	(Styles.Meta_Info_2 + str(len(__FilesToCopy)) + " ") if len(__FilesToCopy) > 1 else "",
 	Styles.Reset
 	)
 )

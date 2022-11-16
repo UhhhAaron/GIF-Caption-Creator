@@ -1,5 +1,6 @@
 from os import *
 del open
+from mutagen import File as mFile
 from platform import system as system_
 from tkinter import Tk, filedialog as fd, messagebox as msgbox
 
@@ -19,7 +20,7 @@ except: pass
 def Folder_Size():
 	"""Calculates folder size recursively"""
 	Size = 0
-	for Root, Dirs, Files in walk("."):
+	for Root, _, Files in walk("."):
 		for File in Files:
 			Path = path.join(Root, File)
 			if not path.islink(Path):

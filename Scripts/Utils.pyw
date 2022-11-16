@@ -3,7 +3,7 @@ def Get_Service(URL: str) -> str:
 	
 	Commented statements are deprecated but may work.
 	Enable on your own responsibility"""
-	if "//tenor.com/view" in URL:			URL = get(URL).text.split("contentUrl")[1].split("content")[0][2:].split('"')[1].replace("\\u002F", "/")
+	if "//tenor.com/view" in URL:			URL = get(URL).text.split("contentUrl")[1].replace("\\u002F", "/").split('"')[2]
 	if "//giphy.com/gifs" in URL:			URL = "https://media" + str(get(URL).text).split("https://media")[2].split('"')[0]
 	if "//gfycat.com/" in URL:				URL = get(URL).text.split("twitter:image")[1].split('"')[2].replace("size_restricted", "small")
 	if "//imgflip.com/gif/" in URL:			URL = URL.replace("//", "//i.").replace("/gif", "") + ".gif"
@@ -43,7 +43,6 @@ def Get_Emoji_Image(Name: str, Style: int = 5) -> Image.open:
 
 def Get_Emoji_Image2(Name: str, Info: dict) -> Image.open:
 	"""Gets Emoji image from `auepa` API"""
-	#---#
 	Emoji_Image = Utils.center_image(Utils.get_image(Name, Info))
 	#---#
 	ImageIO = io.BytesIO()
@@ -52,7 +51,7 @@ def Get_Emoji_Image2(Name: str, Info: dict) -> Image.open:
 	return Image.open(io.BytesIO(ImageIO.read()))
 
 def Margin(Picture: Image, Top: int, Color = "#FFF") -> Image:
-	"""Adds margin to the `Picture`."""
+	"""Adds margin to the `Picture`"""
 	Width, Height = Picture.size
 	Height = Height + Top + 0
 	#---#
@@ -84,6 +83,7 @@ def Variable_Search(Variable: str = "Path", Delimiter: str = os.pathsep, Content
 		return None
 
 def Remove_Pictures(Directory: os.path.abspath = ".", Format: str = "png") -> os.remove:
+	"""Removes files ending with `Format` from `Directory`"""
 	for Frame in next(os.walk(os.path.abspath(Directory)))[2]:
 		if Frame.endswith(Format):
 			os.chmod(Frame, 511)
@@ -100,19 +100,17 @@ def File_Size(Bytes: float) -> str:
 def Grayscale(Path: os.path.abspath) -> bool:
 	"""Checks if image can be converted into a grayscale color palette"""
 	Picture = Image.open(Path).convert("RGB")
-
+	#---#
 	RGB = Picture.split()
 	for Color in range(1, 2 + 1):
 		if ImageChops.difference(RGB[0], RGB[Color]).getextrema()[1] != 0:
-			return 0
+			return
 	return 1
 
-def Average_FPS(Image_OBJ):
-	Image_OBJ.seek(0)
-	Frames = 0
-	Duration = Image_OBJ.info["duration"]
-	while 1:
-		try:
-			Frames += 1
-			Image_OBJ.seek(Image_OBJ.tell() + 1)
-		except EOFError: return Frames // Duration
+def Delay(Image_OBJ) -> int:
+	"""Pseudo-automatic calculation of the average GIF image delay"""
+	return int(math.ceil(math.sqrt(1000 / Image_OBJ.info["duration"])))
+
+def ArgParseBool(Boolean: bool) -> str:
+	"""Converts default bool type to argument parser one"""
+	return "store_" + str(not bool(Boolean)).lower()

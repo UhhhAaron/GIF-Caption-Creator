@@ -1,5 +1,4 @@
-exec(open("__init__.pyw", encoding = "utf-8").read())
-from time import sleep
+exec(open("__init__.pyw", encoding = "U8").read())
 from shutil import rmtree
 
 #---#
@@ -21,7 +20,7 @@ try:
 		message = "Removed cache folder ({1}, {0} file{2})".format(
 			Files,
 			Files_Size,
-			"s" if Files == 0 or Files > 1 else ""
+			"s" if not Files or Files > 1 else ""
 			),
 		)
 except Exception as Error:

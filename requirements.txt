@@ -3,7 +3,7 @@ sty
 clipboard>=0.0.4
 Pillow>=5.1
 mutagen
-emoji>=1.5
+emoji>=1.6.1
 auepa
 unidecode
 pyshortcuts

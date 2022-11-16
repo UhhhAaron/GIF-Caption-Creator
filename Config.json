@@ -1,8 +1,11 @@
 {
 	"Text": {
 		"Content": "",
-		"Additional_Wrap": -5,
+		"Additional_Wrap": -8,
 		"Kerning": -1,
+		"Font": {
+			"Type": 2
+		},
 		"Replacements": {
 			"''":	"\"",
 			"{bs}":	"\\"
@@ -17,7 +20,7 @@
 	"Media": {
 		"Image": {
 			"URL_or_Path": "",
-			"Scale_Back": false,
+			"Scale_Back": true,
 			"Watermark": false
 		},
 		"Video": {
@@ -27,17 +30,14 @@
 			},
 			"Audio": {
 				"URL_or_Path": "",
-				"Bitrate": 320,
+				"Bitrate": 1024,
 				"Channels": 2
 			},
 			"Keep_Image": false
 		}
 	},
-	"Font": {
-		"Type": 2
-	},
 	"Settings": {
-		"Delay": 2,
+		"Delay": 0,
 		"Caption_Design": {
 			"Percentage_Elements_Size": {
 				"Font": 10,
@@ -63,11 +63,11 @@
 		},
 		"Dark_Mode": {
 			"Enabled": false,
+			"After_Hour": 22,
 			"Colors": {
 				"Text": "#A0A0A0",
 				"Caption_Field": "#141414"
-				},
-			"After_Hour": 22
+			}
 		},
 		"Packages": {
 			"Location": {
@@ -80,11 +80,11 @@
 		"Colored_Prints": {
 			"Enabled": true,
 			"Colors": {
-				"Error": "#C50F1F",
-				"OK": "#16C60C",
+				"Error": "#C10",
+				"OK": "#0C0",
 				"Flaw": "#E74856",
 				"Info": {
-					"Main": "#4099DD",
+					"Main": "#4AF",
 					"Meta": {
 						"1": "#808080",
 						"2": "#B000FF"
@@ -92,9 +92,10 @@
 					}
 				}
 			},
-		"Open_Folder": true,
+		"Add_Metadata": true,
+		"Open_Folder": false,
 		"Time_Logs": true,
-		"Verbose": true,
+		"Verbose": 0,
 		"Sound": true
 	}
 }

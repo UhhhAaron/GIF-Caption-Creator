@@ -33,13 +33,13 @@ __Font_Size = Percentage(
 )
 __Fonts = {Keys + 1: Values for Keys, Values in enumerate([File[:-4] for File in sorted(next(os.walk("Fonts"))[2], key = str) if File.endswith("otf")][::-1])}
 
-if not Config["Font"]["Type"]: Config["Font"]["Type"] = randint(1, len(__Fonts))
-__Path = "./Fonts/{0}.otf".format(__Fonts[Config["Font"]["Type"]])
+if not Config["Text"]["Font"]["Type"]: Config["Text"]["Font"]["Type"] = randint(1, len(__Fonts))
+__Path = "./Fonts/{0}.otf".format(__Fonts[Config["Text"]["Font"]["Type"]])
 Font = ImageFont.truetype(__Path, __Font_Size)
 
 # Emoji Setup
 
-if Config["Font"]["Type"] == 1:
+if Config["Text"]["Font"]["Type"] == 1:
 	if Config["Emoji"]["API_Type"] == 1:
 		if not Config["Emoji"]["Style_if_1"]:
 			__Style = 3
@@ -49,7 +49,7 @@ if Config["Font"]["Type"] == 1:
 		__Style = {"Google": "7.1"}
 		Get_Emoji_Image = Get_Emoji_Image2
 
-if Config["Font"]["Type"] == 2:
+if Config["Text"]["Font"]["Type"] == 2:
 	if Config["Emoji"]["API_Type"] == 1:
 		if not Config["Emoji"]["Style_if_1"]:
 			__Style = 3
@@ -61,8 +61,8 @@ if Config["Font"]["Type"] == 2:
 
 # Text CLI input
 
-if Config["Text"]["Content"] == "":
-	print("\n{0}Warning{3}: {1}No text given!{3}\nInput {2}URL{3} or {2}absolute path{3} to image.\n\nPerform {2}CTRL{3} + {2}C{3}, then {2}Enter{3} when done.\nPress {2}CTRL{3} + {2}Z{3}, then {2}Enter{3} to exit.\n\nText will be stripped. Multilne supported. ({2}Enter{3})\n{4}".format(
+if not Config["Text"]["Content"]:
+	print("\n{0}Warning{3}: {1}No text given!{3}\nPlease input.\n\nPerform {2}CTRL{3} + {2}C{3}, then {2}Enter{3} when done.\nPress {2}CTRL{3} + {2}Z{3}, then {2}Enter{3} to exit.\n\nText will be stripped. Multilne supported. ({2}Enter{3})\n{4}".format(
 		Styles.Warning, Styles.Flaw, Styles.Info, Styles.Reset, __BEL
 		)
 	)

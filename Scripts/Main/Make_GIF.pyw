@@ -6,30 +6,45 @@ except IndexError:
 
 print("Making {0}...".format("PNG" if len(Frames) == 1 else "GIF"))
 
+#---#
+
+if Config["Media"]["Image"]["Scale_Back"]:
+	Original_Image = Config["Media"]["Image"]["URL_or_Path"]
+	if not os.path.exists(Config["Media"]["Image"]["URL_or_Path"]):
+		Original_Image = get(Get_Service(Config["Media"]["Image"]["URL_or_Path"]), stream = 1).raw
+	Original_Image = Image.open(Original_Image).convert("RGBA")
+
 __MKE_TIME = time()
 for Frame in Frames:
 	try:
-		Caption = Image.open(Frame)
+		Caption = Frame_ = Image.open(Frame).convert("RGBA")
 		#---#
-		exec(open("./Scripts/Caption.pyw", encoding = "utf-8").read())	
-		exec(open("./Scripts/Gifer.pyw", encoding = "utf-8").read())
+		exec(open_("../Caption"))
+		exec(open_("../Gifer"))
 		#---#
-		# if Config["Settings"]["Optimize"]["Enabled"]: Captionized = Captionized.convert(mode = "P", palette = Image.ADAPTIVE)
+		if Config["Media"]["Image"]["Scale_Back"]:
+			Scale_Back_ = Captionized.size
+			#---#
+			SB_Width = Frame_Size[0]
+			SB_Percentage = SB_Width / float(Scale_Back_[0])
+			SB_Height_Size = int((float(Scale_Back_[1]) * float(SB_Percentage)))
+			#---#
+			Captionized = Captionized.resize((SB_Width, SB_Height_Size), Image.LANCZOS)
+
+			Captionized.paste(
+				Frame_,
+				(
+					(Captionized.size[0] - Frame_.size[0]) // 2,
+					Captionized.size[1] - Frame_.size[1]
+				),
+				Frame_
+			)
+		#---#
 		Captionized.save(Frame)
-			
 	except FileNotFoundError:
 		pass
 __MKE_TIME = timedelta(seconds = time() - __MKE_TIME)
 
 #---#
-
-Scale_Back = 0
-if Config["Media"]["Image"]["Scale_Back"]:
-	Scale_Back_ = Captionized.size
-
-	SB_Width = Frame_Size[0]
-	SB_Percentage = SB_Width / float(Scale_Back_[0])
-	SB_Height_Size = int((float(Scale_Back_[1]) * float(SB_Percentage)))
-	Scale_Back = (SB_Width, SB_Height_Size)
 
 print("Saving {0}...{1}".format("PNG" if len(Frames) == 1 else "GIF", Styles.Info))

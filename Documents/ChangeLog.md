@@ -251,7 +251,6 @@ Initial release.
 - Grainy static images rendering.
 - Grayscale optimization.
 - Static images optimization.
-- Saving media with dots.
 - Increased documentation readability.
 ### Modified 🔁
 - Packages locating system.
@@ -260,3 +259,23 @@ Initial release.
 - Metadata system.
 ### Removed 🚫
 - `Emoji_Height_Spacing`
+
+## 3.5
+### Added ➕
+- `Side → Mono` audio channel mode.
+- Exception handling for unopenable audio files.
+- Automatic detections systems for:
+  - Delay
+  - Audio Bitrate
+- Audio metadata.
+- Improved quality for static images captions.
+- Updates notification system.
+- Command Line Interface support for several values in `Config.json` keys.
+- More Command Line Interface arguments.
+### Fixed 📝
+- Feature Request addition template.
+- Saving media with dots.
+- Default colored prints values.
+### Modified 🔁
+- `Tenor` GIF image service.
+- Metadata addition system.

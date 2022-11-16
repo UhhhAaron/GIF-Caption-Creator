@@ -6,7 +6,7 @@ __Name = os.path.abspath("./{0}/{1}".format(
 				"[^\w\-_\. ]", "_",
 				Config["Text"]["Content"][:25]
 			)
-		),
+		).replace(".", ""),
 		Random_String(8),
 		"png" if len(Frames) == 1 else "gif"
 		).replace(" ", "_")

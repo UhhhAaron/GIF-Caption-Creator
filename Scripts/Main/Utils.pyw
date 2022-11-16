@@ -2,7 +2,7 @@ __Out_Dir = "Images"
 __Dynamic_Formats = ("apng", "gif", "gifv"), ("3gp", "flv", "mkv", "mov", "mp4", "webm")
 
 try:
-	Config = load(open("Config.json", encoding = "utf-8"))
+	Config = load(open("Config.json", encoding = "U8"))
 except decoder.JSONDecodeError as Error:
 	raise SystemExit("Haven't You forgot something? (Line {0} / Position {1})".format(
 		Error.__dict__["lineno"], Error.__dict__["pos"]
@@ -16,7 +16,7 @@ _COLP = _COLP["Enabled"]
 
 #---#
 
-Image.MAX_IMAGE_PIXELS = 1_000_000_000                                                                                              
+Image.MAX_IMAGE_PIXELS = float("inf")
 ImageFile.LOAD_TRUNCATED_IMAGES = 1
 Image.warnings.filterwarnings("ignore", category = UserWarning)
 
@@ -38,7 +38,8 @@ for Variable in list(vars(_CLS))[2:-2]:
 	)
 
 _CLS.Warning = fg(*IC.getrgb("#FFCC00")) if _COLP else ""
-_CLS.Reset = "\033[0m" if _COLP else ""
+_CLS.Reset = fg.rs if _COLP else ""
+_CLS.Hidden = fg(*IC.getrgb("#1A1A1A")) if _COLP else ""
 
 #---#
 
