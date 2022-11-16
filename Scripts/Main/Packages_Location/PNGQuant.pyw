@@ -8,20 +8,18 @@ if system() == "Windows":
 		if os.path.isfile(__PNGQuant):
 			pass
 		else:
-			raise SystemExit(__PNGQuant_Error_1 + ' {1}("{0}"){2}'.format(
+			print(__PNGQuant_Error_1 + ' {1}("{0}"){2}'.format(
 				__PNGQuant, Styles.Meta_Info, Styles.Reset) + __PNGQuant_Error_2
 			)
 	else:
-		__PNGQuant = Get_Path(Config["Settings"]["Packages"]["Location"][__PNGQuant])
-		if os.path.isfile(__PNGQuant):
-			pass
-		else:
-			raise SystemExit(__PNGQuant_Error + "({0})".format(__PNGQuant))
+		print(__PNGQuant_Error_1 + ' {1}("{0}"){2}'.format(
+			__PNGQuant, Styles.Meta_Info, Styles.Reset) + __PNGQuant_Error_2
+		)
 else:
 	try:
 		if cache[__PNGQuant.lower()].is_installed:
 			__PNGQuant = __PNGQuant.lower()
 	except IndexError:
-		raise SystemExit(__PNGQuant_Error_1 + ' {1}("{0}"){2}'.format(
+		print(__PNGQuant_Error_1 + ' {1}("{0}"){2}'.format(
 			__PNGQuant, Styles.Meta_Info, Styles.Reset) + __PNGQuant_Error_2
 		)

@@ -1,7 +1,7 @@
 def Get_Service(URL: str) -> str:
 	"""Scraping main Image URL from various pages.
 	
-	Commented statements are deprecated but may work.
+	Commented statements are deprecated, but may work.
 	Enable on your own responsibility"""
 	if "//" in URL:
 		if "tenor.com/view" in URL:				URL = get(URL).text.split("contentUrl")[1].replace("\\u002F", "/").split('"')[2]
@@ -25,15 +25,30 @@ def Get_Service(URL: str) -> str:
 	return URL
 
 def Get_Emoji_Image(Name: str, Style: int = 5) -> Image.open:
-	"""Gets Emoji image from "emojicdn.elk.sh" API using style lists from its GitHub main page"""
+	"""Gets Emoji image from "emojicdn.elk.sh" API using style lists from its GitHub main page
+	
+	`Styles` variable can be upgraded by executing the following code:
+	```python
+	Styles = {}
+	
+	```
+	"""
 	Styles = {
-		1: 'apple', 2: 'google', 3: 'microsoft', 4: 'samsung',
-		5: 'whatsapp', 6: 'twitter', 7: 'facebook',
-		8: 'joypixels', 9: 'openmoji',	10: 'emojidex',
-		11: 'lg', 12: 'htc', 13: 'mozilla'
+		1: "apple",
+		2: "google",
+		3: "microsoft",
+		4: "samsung",
+		5: "whatsapp",
+		6: "twitter",
+		7: "facebook",
+		8: "joypixels",
+		9: "openmoji",
+		10: "emojidex",
+		11: "lg",
+		12: "htc",
+		13: "mozilla"
 	}
-	# Styles = {Keys: Values for Keys, Values in enumerate([get("http://github.com/benborgers/emojicdn").text.split("<ul>")[2].split("<li><code>")[x + 1].split("</code></li>\n")[0] for x in range(13)])}
-	#---#
+	#-=-=-=-#
 	Emoji_Image = Image.open(get(
 		"https://emojicdn.elk.sh/{0}?style={1}".format(
 			quote_plus(emojize(Name, use_aliases = 1)),
@@ -41,7 +56,7 @@ def Get_Emoji_Image(Name: str, Style: int = 5) -> Image.open:
 			), stream = 1
 		).raw
 	).convert("RGBA")
-	#---#
+	#-=-=-=-#
 	ImageIO = io.BytesIO()
 	Emoji_Image.save(ImageIO, "PNG")
 	ImageIO.seek(0)
@@ -50,7 +65,7 @@ def Get_Emoji_Image(Name: str, Style: int = 5) -> Image.open:
 def Get_Emoji_Image2(Name: str, Info: dict) -> Image.open:
 	"""Gets Emoji image from `auepa` API"""
 	Emoji_Image = Utils.center_image(Utils.get_image(Name, Info))
-	#---#
+	#-=-=-=-#
 	ImageIO = io.BytesIO()
 	Emoji_Image.save(ImageIO, "PNG")
 	ImageIO.seek(0)
@@ -59,15 +74,15 @@ def Get_Emoji_Image2(Name: str, Info: dict) -> Image.open:
 def Margin(Picture: Image, Top: int, Color = "#FFF") -> Image:
 	"""Adds margin to the `Picture`"""
 	Width, Height = Picture.size
-	Height = Height + Top + 0
-	#---#
+	Height += Top + 0
+	#-=-=-=-#
 	Field = Image.new(Picture.mode, (Width, Height), Color)
 	Field.paste(Picture, (0, Top))
 	return Field
 
 def Percentage(Whole: float, Percent: float) -> float:
 	"""Calculates `Percent` of `Whole`"""
-	return int((Percent * Whole) / 1E2)
+	return int((Percent * Whole) / 100)
 
 def Random_String(Length: int = 16) -> str:
 	"""Random string creation used in saving files"""
@@ -92,21 +107,21 @@ def Remove_Pictures(Directory: os.path.abspath = ".", Format: str = "png") -> os
 	"""Removes files ending with `Format` from `Directory`"""
 	for Frame in next(os.walk(os.path.abspath(Directory)))[2]:
 		if Frame.endswith(Format):
-			os.chmod(Frame, 511)
 			os.remove(Frame)
 	return
 
 def File_Size(Bytes: float) -> str:
 	"""Returns human-readable file size"""
 	for Unit in ["B", "KB", "MB", "GB", "TB", "PB"]:
-		if Bytes < 1024.: break
-		Bytes /= 1024.
-	return "{0} {1}".format(round(Bytes, 2), Unit)
+		if Bytes < 1024: break
+		Bytes /= 1024
+	#-=-=-=-#
+	return str(round(Bytes, 2)) + " " + Unit
 
 def Grayscale(Path: os.path.abspath) -> bool:
 	"""Checks if image can be converted into a grayscale color palette"""
 	Picture = Image.open(Path).convert("RGB")
-	#---#
+	#-=-=-=-#
 	RGB = Picture.split()
 	for Color in range(1, 2 + 1):
 		if ImageChops.difference(RGB[0], RGB[Color]).getextrema()[1] != 0:
@@ -121,6 +136,8 @@ def ArgParseBool(Boolean: bool) -> str:
 	"""Converts default bool type to argument parser one"""
 	return "store_" + str(not bool(Boolean)).lower()
 
-def Get_Path(Path: str) -> os.path.abspath:
+def Get_Path(Path: os.path.abspath) -> str:
 	"""Absolute path getter with additional user and variables expansion"""
-	return os.path.abspath(os.path.expanduser(os.path.expandvars(Path)))
+	if not Path.startswith("http"):
+		Path = os.path.abspath(os.path.expanduser(os.path.expandvars(Path)))
+	return Path

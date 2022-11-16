@@ -12,11 +12,9 @@ if system() == "Windows":
 				__OxiPNG, Styles.Meta_Info, Styles.Reset) + __OxiPNG_Error_2
 			)
 	else:
-		__OxiPNG = Get_Path(Config["Settings"]["Packages"]["Location"][__OxiPNG])
-		if os.path.isfile(__OxiPNG):
-			pass
-		else:
-			print(__OxiPNG_Error + "({0})".format(__OxiPNG))
+		print(__OxiPNG_Error_1 + ' {1}("{0}"){2}'.format(
+			__OxiPNG, Styles.Meta_Info, Styles.Reset) + __OxiPNG_Error_2
+		)
 else:
 	try:
 		if cache[__OxiPNG.lower()].is_installed:

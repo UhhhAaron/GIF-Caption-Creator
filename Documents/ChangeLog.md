@@ -299,3 +299,25 @@ Initial release.
 - Argument parser audio local filepath recognition.
 ### Removed 🚫
 - Automatic audio codec detection.
+
+## 3.7
+### Added ➕
+- [`WebM`](https://wikipedia.org/wiki/WebM) support.
+- Support for TrueType Format (`TTF`) for Custom Fonts.
+- **Partial** support for other Linux distributions and MacOS. (#7)
+### Fixed 📝
+- Missing frames bug.
+### Modified 🔁
+- **Renamed `__init__.pyw` to `iFunny_Captions.pyw`**.
+- **Changed the Emoji API type for `Futura Condensed Extra Bold` font to `Twitter`**. (**`6`**)
+- **Improved images quality**.
+- Systems of:
+  - Automatic packages detection (#15)
+  - Newlines (#12)
+  - Text-wrapping
+  - Optimizations
+- Program files structure.
+### Removed 🚫
+- Following keys from `Config.json`:
+  - `Percentage_Elements_Size`
+  - `Packages`

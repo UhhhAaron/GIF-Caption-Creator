@@ -1,1 +1,1 @@
-python __init__.pyw -t "" -i "" -p
+python iFunny_Captions.pyw -t "" -i "" -p

@@ -1,4 +1,4 @@
-Bool = __BaseDir + "/Scripts/Main/Update/No_Update"
+Bool = os.path.join(__BaseDir, "Scripts/Main/Update/No_Update")
 
 if not os.path.exists(Bool):
 	try:
@@ -16,5 +16,5 @@ if not os.path.exists(Bool):
 			if Update:
 				exec(open_("Update/Update"))
 				os.remove(Bool)
-	except ConnectionError:
+	except:
 		pass

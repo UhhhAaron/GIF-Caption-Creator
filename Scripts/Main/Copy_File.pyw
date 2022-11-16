@@ -7,11 +7,14 @@ print("{2}Copying {1}{2}frame{0} to main directory...".format(
 	)
 )
 
-#---#
+#-=-=-=-#
 
 for File in __FilesToCopy:
 	try:
-		copyfile(os.path.abspath(File), __BaseDir + "/" + File)
+		copyfile(
+			os.path.abspath(File),
+			os.path.join(__BaseDir, File)
+		)
 		# os.rename(File, "Frame_{0}.png".format(str(__FileToCopy.index(File)).zfill(5)))
 	except KeyboardInterrupt:
 		print("{1}Warning{2}: User interrupted the frames copying process. Copied {1}{0}{2} frames so far.{3}".format(

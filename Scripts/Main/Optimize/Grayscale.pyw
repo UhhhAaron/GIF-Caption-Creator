@@ -5,9 +5,9 @@ if Grayscale(__Name):
 		Image.open(__Name).convert("L").save(__Name)
 	else:
 		os.system('{0} -b --transform-colormap gray "{1}" {2}'.format(
-			__Gifsicle,
+			__GifSicle,
 			__Name,
-			"-i -cinfo -xinfo -sinfo -V" if Config["Settings"]["Packages"]["Logs"] else "-w"
+			"-i -cinfo -xinfo -sinfo -V" if Config["Settings"]["Logs"]["Packages"] else "-w"
 			)
 		)
 else:

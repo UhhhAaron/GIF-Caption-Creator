@@ -11,12 +11,6 @@ if Config["Settings"]["Dark_Mode"]["Enabled"]:
 __Fill = Color(__Fill).hex_l
 __Pasted_Color = Color(__Pasted_Color).hex_l
 
-if not Config["Settings"]["Caption_Design"]["Percentage_Elements_Size"]["Caption_Field_Height"]:
-	raise SystemExit("{1}{0}{3}: {2}Incorrect design value - caption will not be created.{3}{4}".format(
-		ValueError.__name__, Styles.Warning, Styles.Error, Styles.Reset, __BEL
-		)
-	)
-
 Image_Base = Image.new(
 	"RGBA",
 	(1250, 5000),
@@ -26,17 +20,20 @@ Draw = ImageDraw.Draw(Image_Base)
 
 # Automatic Max Width
 
-Config["Media"]["Image"]["Max_Width"] = 450
+Config["Media"]["Image"]["Max_Width"] = 1_000
 
 # Font Setup
 
-__Font_Size = Percentage(
-	Config["Media"]["Image"]["Max_Width"],
-	Config["Settings"]["Caption_Design"]["Percentage_Elements_Size"]["Font"]
-)
-__Fonts = {Keys + 1: Values for Keys, Values in enumerate([File[:-4] for File in sorted(next(os.walk("Fonts"))[2], key = str) if File.endswith("otf")][::-1])}
+__Font_Size = Percentage(Config["Media"]["Image"]["Max_Width"], 10)
+__Fonts = {Keys + 1: Values for Keys, Values in enumerate(
+		[File[:-4] for File in sorted(
+			next(os.walk("Fonts"))[2], key = str
+		) if File.upper().endswith(("TTF", "OTF"))][::-1]
+	)
+}
 
-if not Config["Text"]["Font"]["Type"]: Config["Text"]["Font"]["Type"] = randint(1, len(__Fonts))
+if not Config["Text"]["Font"]["Type"]:
+	Config["Text"]["Font"]["Type"] = randint(1, len(__Fonts))
 __Path = "./Fonts/{0}.otf".format(__Fonts[Config["Text"]["Font"]["Type"]])
 Font = ImageFont.truetype(__Path, __Font_Size)
 
@@ -55,11 +52,11 @@ if Config["Text"]["Font"]["Type"] == 1:
 if Config["Text"]["Font"]["Type"] == 2:
 	if Config["Emoji"]["API_Type"] == 1:
 		if not Config["Emoji"]["Style_if_1"]:
-			__Style = 3
+			__Style = 6
 		else:
 			__Style = Config["Emoji"]["Style_if_1"]
 	if Config["Emoji"]["API_Type"] == 2:
-		__Style = {"iOS": "9.3"}
+		__Style = {"Twitter": "14.0"}
 		Get_Emoji_Image = Get_Emoji_Image2
 
 # Text CLI input
@@ -96,20 +93,26 @@ if not Config["Text"]["Content"]:
 Config["Text"]["Content"] = emojize(Config["Text"]["Content"], use_aliases = 1)
 Config["Text"]["Content"] = Replace(Config["Text"]["Content"], Config["Text"]["Replacements"])
 Config["Text"]["Content"] = Config["Text"]["Content"].strip().strip("\n")
-if Config["Text"]["Content"] == "": Config["Text"]["Content"] = "あ"
+if Config["Text"]["Content"] == "":
+	Config["Text"]["Content"] = "あ"
 
 # Automatic Text Wrap
 
 Text = wrap(
 	"{0}".format(Config["Text"]["Content"]),
-	width = 1
+	width = 22
 )
-Text = wrap(
-	"{0}".format(Config["Text"]["Content"]),
-	width = Font.getsize(
-		sorted(Text, key = len)[-1])[0] - int(Config["Text"]["Additional_Wrap"]
-	)
-)
+
+#print(Text)
+
+#Text = wrap(
+#	"{0}".format(Config["Text"]["Content"]),
+#	width = Font.getsize(
+#		sorted(Text, key = len)[-1])[0] - int(Config["Text"]["Additional_Wrap"] * 2
+#	)
+#)
+
+Text = list(sum([Word.split(r"\n") for Word in Text], []))
 
 # Caption Setup
 
@@ -126,7 +129,7 @@ for Line in Text:
 	)
 	Line_ImageDraw = ImageDraw.Draw(Line_Image)
 	__X = 0
-	#---#
+	#-=-=-=-#
 	for Character in Line:
 		if Character in UNICODE_EMOJI_ENGLISH:
 			try:
@@ -140,17 +143,15 @@ for Line in Text:
 					demojize(Character),
 					)
 				)
-			#---#
+			#-=-=-=-#
 			Emoji = Emoji.resize(
 				(
 					Percentage(
-						Font.getsize("pÓ")[1],
-						Config["Settings"]["Caption_Design"]["Percentage_Elements_Size"]["Emojis"]
+						Font.getsize("pÓ")[1], 75
 					),
-				) * 2,
-				Image.LANCZOS
+				) * 2, 1
 			)
-			#---#
+			#-=-=-=-#
 			Line_Image.paste(
 				Emoji,
 				(
@@ -161,16 +162,16 @@ for Line in Text:
 			)
 			__X += Emoji.size[0] + Config["Text"]["Kerning"]
 			Character = Character.replace(Character, "")
-		#---#
+		#-=-=-=-#
 		Line_ImageDraw.text(
 			xy = (__X, 5),
 			text = Character,
 			font = Font,
 			fill = __Fill
 		)
-		#---#
+		#-=-=-=-#
 		__X += Font.getsize(Character)[0] + Config["Text"]["Kerning"]
-		#---#
+		#-=-=-=-#
 	Line_Image = Line_Image.crop(Line_Image.getbbox())
 
 	Line_Image_2 = Image.new(
@@ -185,8 +186,8 @@ for Line in Text:
 	Images.append(Line_Image_2)
 
 # Text Alignment
-
-for IMG in range(len(Images)):
+for IMG in enumerate(Images):
+	IMG = IMG[0]
 	Text_Image = Image.new(
 		"RGBA",
 		(
@@ -206,13 +207,13 @@ for IMG in range(len(Images)):
 	Expanded_Images.append(Text_Image)
 
 __Y = 0
-for IMG in range(len(Expanded_Images)):
+for IMG in enumerate(Expanded_Images):
+	IMG = IMG[0]
 	if IMG == len(Expanded_Images):
 		__Y += Expanded_Images[0].size[1] // len(Expanded_Images)
 	else:
 		__Y += Percentage(
-			Font.getsize("yÓ")[1],
-			Config["Settings"]["Caption_Design"]["Percentage_Elements_Size"]["Leading"]
+			Font.getsize("yÓ")[1], 112
 		) + 5
 	Image_Base.paste(
 		Expanded_Images[IMG],
@@ -230,10 +231,9 @@ Image_Base = Image_Base.crop(Image_Base.getbbox())
 Pasted = Image.new(
 	"RGBA",
 	(
-		Config["Media"]["Image"]["Max_Width"],
+		int(Config["Media"]["Image"]["Max_Width"]),
 		Image_Base.size[1] + Percentage(
-			Font.getsize("yÓ")[1],
-			Config["Settings"]["Caption_Design"]["Percentage_Elements_Size"]["Caption_Field_Height"]
+			Font.getsize("yÓ")[1], 150
 		)
 	),
 	__Pasted_Color
@@ -248,13 +248,12 @@ Pasted.paste(
 )
 
 if Config["Media"]["Image"]["Watermark"]:
-	WM_Size = Config["Media"]["Image"]["Max_Width"] // 25
+	WM_Size = Config["Media"]["Image"]["Max_Width"] // 55
 	WM_Offset = WM_Size // 5
 	
-	Watermark = Image.open(__BaseDir + "/Documents/Pictures/Icons/iFunny.png").convert("RGBA")
+	Watermark = Image.open(os.path.join(__BaseDir, "Documents/Pictures/Icons/iFunny.png")).convert("RGBA")
 	Watermark = Watermark.resize(
-		(WM_Size,) * 2,
-		Image.LANCZOS
+		(WM_Size,) * 2, 1
 	)
 
 	Pasted.paste(

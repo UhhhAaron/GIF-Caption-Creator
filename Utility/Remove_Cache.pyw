@@ -3,29 +3,33 @@ from shutil import rmtree
 
 #---#
 
-__TEMP = getenv("Temp") if system_() == "Windows" else "/tmp"
-__Folder = __TEMP + "/iFunny"
+__TEMP = os.getenv("TEMP") if os.sys.platform.startswith("win") else "/tmp"
+__Folder = os.path.join(__TEMP, "iFunny")
 
 #---#
 
 try:
-	chmod(__Folder, 511)
-
-	Files = sum(len(Files) for _, _, Files in walk(__Folder))
+	Files = sum(len(Files) for _, _, Files in os.walk(__Folder))
 	Files_Size = File_Size(Folder_Size())
 
+	#-=-=-=-#
+
 	rmtree(__Folder)
+
+	message = "Removed cache folder ({1}, {0} file{2})".format(
+		Files,
+		Files_Size,
+		"s" if not Files or Files > 1 else ""
+	)
+
 	msgbox.showinfo(
 		title = "Success",
-		message = "Removed cache folder ({1}, {0} file{2})".format(
-			Files,
-			Files_Size,
-			"s" if not Files or Files > 1 else ""
-			),
+		message = Message,
 		)
-except Exception as Error:
-	print(Error)
+except OSError:
+	Message = "No cache folder found!"
+
 	msgbox.showwarning(
-		title = Error.__class__.__name__,
-		message = "No cache folder found!"
+		title = "Failure",
+		message = Message
 		)

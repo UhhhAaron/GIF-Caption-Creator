@@ -5,7 +5,7 @@ if Config["Media"]["Image"]["URL_or_Path"] == "clipboard":
 	)
 	Config["Media"]["Image"]["URL_or_Path"] = paste()
 
-#---#
+#-=-=-=-#
 
 if not Config["Media"]["Image"]["URL_or_Path"]:
 	Config["Media"]["Image"]["URL_or_Path"] = fd.askopenfilename(
@@ -49,7 +49,7 @@ if not Config["Media"]["Image"]["URL_or_Path"]:
 			raise SystemExit("No text inputted - exiting.")
 		print("Finishing text input!\n")
 
-#---#
+#-=-=-=-#
 
 try:
 	try:

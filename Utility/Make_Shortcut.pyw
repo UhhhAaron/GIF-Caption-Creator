@@ -1,36 +1,35 @@
 exec(open("__init__.pyw", encoding = "U8").read())
-from pyshortcuts import make_shortcut
 
-Icon_HQ = path.abspath(Icon.replace(
-	"Icon", "Icon_HQ"
-	)
-)
+with redirect_stdout(None):
+	from pyshortcuts import make_shortcut
 
-Script = path.abspath('../__init__.pyw')
-Initial_Directory = "~/Desktop"
+Initial_Directory = os.path.abspath(os.path.expanduser("~/Desktop"))
+Script = os.path.abspath("../iFunny_Captions.pyw")
+Icon_HQ = os.path.abspath(Icon.replace("Icon.", "Icon_HQ."))
 
 #---#
 
 Folder = fd.askdirectory(
-	title = "Make shortcut to program",
-	initialdir = path.abspath(path.expanduser(Initial_Directory))
-	)
-Folder = path.abspath(Folder)
+	title = "Select folder to create the shortcut in",
+	initialdir = Initial_Directory
+)
+Folder = os.path.abspath(Folder)
 
-if Folder == getcwd():
-	Folder = path.abspath(path.expanduser(Initial_Directory))
-	raise SystemExit("Folder selection aborted")
+if Folder == os.getcwd():
+	Folder = Initial_Directory
+	raise SystemExit("Folder selection aborted.")
 
-chdir(Folder)
+os.chdir(Folder)
 
 #---#
 
 Name = "iFunny-Captions"
 try:
-	print("Removing previous shortcut...")
-	for Shortcut in next(walk("."))[2]:
+	for Shortcut in next(os.walk("."))[2]:
 		if Shortcut.startswith(Name):
-			remove(path.abspath(Shortcut))
+			print("Removing previous shortcut...")
+			os.remove(os.path.abspath(Shortcut))
+			break
 except IndexError:
 	pass
 
@@ -39,19 +38,17 @@ except IndexError:
 print("Making shortcut...")
 make_shortcut(
 	Script, Name,
-	"Make the caption with predefined settings",
+	"Make the iFunny Caption",
 	Icon_HQ, Folder, startmenu = False,
 )
 
 #---#
 
-Message = 'Shortcut successfully created in "{0}" folder.'.format(
-	Folder.split(sep)[-1]
-	)
+Message = 'Shortcut successfully created in "' + os.path.basename(Folder) + '" folder.'
 
 msgbox.showinfo(
 	title = "Success",
 	message = Message,
-	)
+)
 
-raise SystemExit(Message)
+print(Message)

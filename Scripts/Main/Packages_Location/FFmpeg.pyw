@@ -8,20 +8,23 @@ if system() == "Windows":
 		if os.path.isfile(__FFmpeg):
 			pass
 		else:
-			raise SystemExit(__FFmpeg_Error_1 + ' {1}("{0}"){2}'.format(
+			print(__FFmpeg_Error_1 + ' {1}("{0}"){2}'.format(
 				__FFmpeg, Styles.Meta_Info, Styles.Reset) + __FFmpeg_Error_2
 			)
 	else:
-		__FFmpeg = Get_Path(Config["Settings"]["Packages"]["Location"][__FFmpeg])
-		if os.path.isfile(__FFmpeg):
-			pass
-		else:
-			raise SystemExit(__FFmpeg_Error + "({0})".format(__FFmpeg))
+		print(__FFmpeg_Error_1 + ' {1}("{0}"){2}'.format(
+			__FFmpeg, Styles.Meta_Info, Styles.Reset) + __FFmpeg_Error_2
+		)
 else:
 	try:
 		if cache[__FFmpeg.lower()].is_installed:
 			__FFmpeg = __FFmpeg.lower()
 	except IndexError:
-		raise SystemExit(__FFmpeg_Error_1 + ' {1}("{0}"){2}'.format(
+		print(__FFmpeg_Error_1 + ' {1}("{0}"){2}'.format(
 			__FFmpeg, Styles.Meta_Info, Styles.Reset) + __FFmpeg_Error_2
 		)
+
+try:
+	__FFmpeg += " -fflags +bitexact -flags:v +bitexact -flags:a +bitexact"
+except:
+	pass

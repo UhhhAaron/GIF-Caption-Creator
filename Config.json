@@ -1,8 +1,8 @@
 {
 	"Text": {
 		"Content": "",
-		"Additional_Wrap": -8,
-		"Kerning": -1,
+		"Additional_Wrap": -5,
+		"Kerning": 0,
 		"Font": {
 			"Type": 2
 		},
@@ -30,22 +30,17 @@
 			},
 			"Audio": {
 				"URL_or_Path": "",
-				"Bitrate": 1024,
+				"Bitrate": 192,
 				"Channels": 2
 			},
-			"Keep_Image": false
+			"Keep_Image": false,
+			"WebM": false
 		}
 	},
 	"Settings": {
 		"Delay": 0,
 		"Loop_Count": 0,
 		"Caption_Design": {
-			"Percentage_Elements_Size": {
-				"Font": 10,
-				"Emojis": 67,
-				"Leading": 112,
-				"Caption_Field_Height": 150
-			},
 			"Colors": {
 				"Text": "Black",
 				"Caption_Field": "White"
@@ -58,7 +53,7 @@
 				"Colors": 256
 			},
 			"Gifsicle": {
-				"Lossy": 200,
+				"Lossy": 400,
 				"Colors": 256
 			}
 		},
@@ -70,34 +65,28 @@
 				"Caption_Field": "#141414"
 			}
 		},
-		"Packages": {
-			"Location": {
-				"FFmpeg": null,
-				"PNGQuant": null,
-				"Gifsicle": null,
-				"OxiPNG": null
-				},
-			"Logs": false
-		},
 		"Colored_Prints": {
 			"Enabled": true,
 			"Colors": {
 				"Error": "#C10",
 				"OK": "#0C0",
-				"Flaw": "#E74856",
+				"Flaw": "#F36",
 				"Info": {
 					"Main": "#4AF",
 					"Meta": {
-						"1": "Gray",
-						"2": "#B000FF"
+						"1": "#999",
+						"2": "#90F"
 						}
 					}
 				}
 			},
+		"Logs": {
+			"Time": true,
+			"Packages": false
+		},
 		"Add_Metadata": true,
 		"Open_Folder": false,
-		"Time_Logs": true,
-		"Verbose": 0,
+		"Quiet": false,
 		"Sound": true
 	}
 }

@@ -1,27 +1,25 @@
-__Gifsicle = "Gifsicle"
-__Gifsicle_Error_1 = "\n{1}{0}{2} not found!".format(__Gifsicle, Styles.Warning, Styles.Reset)
-__Gifsicle_Error_2 = "\n{0}Image will not be processed.{1}{2}".format(Styles.Error, Styles.Reset, __BEL)
+__GifSicle = "Gifsicle"
+__GifSicle_Error_1 = "\n{1}{0}{2} not found!".format(__GifSicle, Styles.Warning, Styles.Reset)
+__GifSicle_Error_2 = "\n{0}Image will not be processed.{1}{2}".format(Styles.Error, Styles.Reset, __BEL)
 
 if system() == "Windows":
-	__Gifsicle = Variable_Search(Content = __Gifsicle)
-	if __Gifsicle:
-		if os.path.isfile(__Gifsicle):
+	__GifSicle = Variable_Search(Content = __GifSicle)
+	if __GifSicle:
+		if os.path.isfile(__GifSicle):
 			pass
 		else:
-			raise SystemExit(__Gifsicle_Error_1 + ' {1}("{0}"){2}'.format(
-				__Gifsicle, Styles.Meta_Info, Styles.Reset) + __Gifsicle_Error_2
+			print(__GifSicle_Error_1 + ' {1}("{0}"){2}'.format(
+				__GifSicle, Styles.Meta_Info, Styles.Reset) + __GifSicle_Error_2
 			)
 	else:
-		__Gifsicle = os.path.abspath(Config["Settings"]["Packages"]["Location"][__Gifsicle])
-		if os.path.isfile(__Gifsicle):
-			pass
-		else:
-			raise SystemExit(__Gifsicle_Error + "({0})".format(__Gifsicle))
+		print(__GifSicle_Error_1 + ' {1}("{0}"){2}'.format(
+			__GifSicle, Styles.Meta_Info, Styles.Reset) + __GifSicle_Error_2
+		)
 else:
 	try:
-		if cache[__Gifsicle.lower()].is_installed:
-			__Gifsicle = __Gifsicle.lower()
+		if cache[__GifSicle.lower()].is_installed:
+			__GifSicle = __GifSicle.lower()
 	except IndexError:
-		raise SystemExit(__Gifsicle_Error_1 + ' {1}("{0}"){2}'.format(
-			__Gifsicle, Styles.Meta_Info, Styles.Reset) + __Gifsicle_Error_2
+		print(__GifSicle_Error_1 + ' {1}("{0}"){2}'.format(
+			__GifSicle, Styles.Meta_Info, Styles.Reset) + __GifSicle_Error_2
 		)

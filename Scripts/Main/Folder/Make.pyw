@@ -1,4 +1,4 @@
-__TEMP		= Get_Path("~/AppData/Local/Temp") if system() == "Windows" else "/tmp"
+__TEMP		= Get_Path("~/AppData/Local/Temp") if os.sys.platform.startswith("win") else "/tmp"
 __Folders	= [__TEMP, "iFunny", "Cache", "Captions", "Frames"]
 
 for Folder in __Folders:

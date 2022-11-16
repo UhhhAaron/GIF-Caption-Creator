@@ -6,12 +6,12 @@ __Name = os.path.abspath("./{0}/{1}".format(
 			normalize(
 				re.sub(
 					"[^\w\-_\. ]", "_",
-					Config["Text"]["Content"]
+					Config["Text"]["Content"].replace(".", "_")
 				)
 			)
-		).replace(".", "")[:25],
+		)[:25],
 		Random_String(8),
-		"png" if len(Frames) == 1 else "gif"
+		"png" if len(Frames) < 2 else "gif"
 		).replace(" ", "_")
 	)
 )

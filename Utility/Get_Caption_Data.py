@@ -1,5 +1,4 @@
 exec(open("__init__.pyw", encoding = "U8").read())
-if system_() == "Windows": system("title Display Caption Metadata")
 from requests import get
 from PIL.PngImagePlugin import *
 from mutagen import File as mFile
@@ -29,9 +28,11 @@ if not File: exit()
 if File.endswith("png"):
 	Info = OrderedDict(list(PngImageFile(File).text.items()))
 else:
-	Info = {Key: Value[0] for Key, Value in mFile(File).items()}
-	try: Info = {"Text": Info["©cmt"], "Image": Info["desc"], "Audio": Info["©nam"]}
-	except: Info = []
+	try:
+		Info = {Key: Value[0] for Key, Value in mFile(File).items()}
+		Info = {"Text": Info["©cmt"], "Image": Info["desc"], "Audio": Info["©nam"]}
+	except AttributeError:
+		Info = []
 
 if len(Info):
 	for Key, Value in Info.items():
@@ -55,4 +56,5 @@ else:
 	print('No metadata was found in "{0}".'.format(File.split("/")[-1]))
 
 print()
-if system_() == "Windows": system("pause")
+if os.sys.platform.startswith("win"):
+	os.system("pause")

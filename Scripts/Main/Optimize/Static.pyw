@@ -8,19 +8,21 @@ if Config["Settings"]["Optimize"]["Enabled"]:
 			)
 		)
 
+		# pngquant 256 --ext .png -f -s 1 --skip-if-larger --nofs "$IN" -v
 		os.system('{0} {2} --ext .png -f -s {1} --skip-if-larger --nofs "{3}" {4}'.format(
 			__PNGQuant,
 			Config["Settings"]["Optimize"]["PNGQuant"]["Speed"],
 			Config["Settings"]["Optimize"]["PNGQuant"]["Colors"],
 			__Name,
-			"" if not Config["Settings"]["Packages"]["Logs"] else "-v"
+			"" if Config["Settings"]["Logs"]["Packages"] else "-v"
 			)
 		)
 
 	exec(open_("Packages_Location/OxiPNG"))
 	try:
 		if __OxiPNG:
-			__OxiPNG_Args = ["a", "i 1", "o max", "p", "-strip all", "q" if not Config["Settings"]["Packages"]["Logs"] else "v"]
+			# oxipng "$IN" -a -i 1 -o max -p --strip all -q
+			__OxiPNG_Args = ["a", "i 1", "o max", "p", "-strip all", "q" if Config["Settings"]["Logs"]["Packages"] else "v"]
 			__OxiPNG_Args = ["-" + Arg for Arg in __OxiPNG_Args]
 
 			print("{3}Optimizing... {1}(OxiPNG, {0}){2}".format(

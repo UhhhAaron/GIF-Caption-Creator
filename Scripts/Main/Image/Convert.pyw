@@ -15,13 +15,11 @@ else:
 		)
 	)
 	try:
-		os.system('{0} -i "{1}" {2} -loglevel {3} -y'.format(
+		os.system('{0} -i "{1}" {2}.png -loglevel {3} -y'.format(
 			__FFmpeg,
 			Get_Service(Config["Media"]["Image"]["URL_or_Path"]),
-			"Frame.png" if not Get_Service(Config["Media"]["Image"]["URL_or_Path"]).endswith(__Dynamic_Formats) else "{0}Frame_%05d.png".format(
-				"-vf select=not(mod(n\,2)) " if Config["Settings"]["Delay"] == 1 else ""
-				),
-			"40" if Config["Settings"]["Packages"]["Logs"] else "-8 -hide_banner"
+			"Frame" if not Get_Service(Config["Media"]["Image"]["URL_or_Path"]).endswith(__Dynamic_Formats) else "Frame_%05d",
+			"-8 -hide_banner" if Config["Settings"]["Logs"]["Packages"] else "40"
 			)
 		)
 	except KeyboardInterrupt:
