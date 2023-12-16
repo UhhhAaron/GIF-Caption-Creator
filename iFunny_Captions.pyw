@@ -34,11 +34,11 @@ from PIL import Image, ImageChops, ImageColor as IC, ImageDraw, ImageFile, Image
 
 #-------------------------#
 
-__author__	= "UhhhAaron"
+__author__	= "Amiran-Taipovjan-IX"
 __copyright__ = __author__
-__credits__	= __author__, "kubinka0505", "SuperCuber"
-__version__	= "3.7"
-__date__	= "11.16.2022"
+__credits__	= __author__, "kubinka0505", "SuperCuber", "UhhhAaron"
+__version__	= "3.8"
+__date__	= "16.12.2023"
 __status__	= "Mature"
 __license__	= "GPL V3"
 
