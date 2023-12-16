@@ -2,13 +2,13 @@
 
 <p align=center><a href=http://python.org/downloads/release/python-376><img src=https://img.shields.io/badge/Python-3.7.6-brightgreen?logo=python&logoColor=white&link=http://python.org/downloads/release/python-376&style=for-the-badge></a>
 
-<p align=center><a href=http://github.com/UhhhAaron/iFunny-Captions/releases/><img src=https://img.shields.io/github/v/release/UhhhAaron/iFunny-Captions?style=for-the-badge></a> <a href=http://github.com/UhhhAaron/iFunny-Captions/blob/master/License.txt><img src=https://img.shields.io/github/license/UhhhAaron/iFunny-Captions?logo=readthedocs&color=red&logoColor=white&style=for-the-badge></a></p>
+<p align=center><a href=http://github.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/releases/><img src=https://img.shields.io/github/v/release/Amirhan-Taipovjan-Greatest-I/iFunny-Captions?style=for-the-badge></a> <a href=http://github.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/blob/master/License.txt><img src=https://img.shields.io/github/license/Amirhan-Taipovjan-Greatest-I/iFunny-Captions?logo=readthedocs&color=red&logoColor=white&style=for-the-badge></a></p>
 
 
-### GIF-Caption-Creator is a pack of scripts providing widely customizable [GIF caption](http://knowyourmeme.com/memes/gif-captions) generation.
+### iFunny-Captions is a pack of scripts providing widely customizable [GIF caption](http://knowyourmeme.com/memes/gif-captions) generation.
 
 ## Capabilities 
-|  | iFunny App | `GIF-Caption-Creator` |
+|  | iFunny App | `iFunny-Captions` |
 |:-:|:-:|:-:|
 | PNG Captions | ✔️ | ✔️ |
 | GIF Captions | ✔️ | ✔️ |
@@ -17,7 +17,7 @@
 | Custom Fonts | ❌ | ✔️ |
 | Emoji support | ✔️ | ✔️ |
 | Crop support | ✔️ | ❌ |
-| Graphical User Interface | ✔️ | ❌ <img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/Main/Google_Colab.svg width=25> |
+| Graphical User Interface | ✔️ | ❌ <img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/Main/Google_Colab.svg width=25> |
 | Batch Processing | ❌ | ✔️ |
 ---
 ## Completed & Planned Features
@@ -32,7 +32,7 @@
 - ✔️ Emoji support<sup>3</sup>
 - ✔️ Automatic text wrap
 
-<sup>1</sup> - Please look at [Custom Fonts](http://github.com/UhhhAaron/GIF-Caption-Creator/wiki/Custom-Fonts) section in wiki.<br>
+<sup>1</sup> - Please look at [Custom Fonts](http://github.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/wiki/Custom-Fonts) section in wiki.<br>
 <sup>2</sup> - Problems with wrap height might occur.
 
 ## Requirements
@@ -82,7 +82,7 @@ This project was tested on:
 |:-:|:-:|
 Windows 10 | 3.7.6 
 
-[**If there are problems, create an issue here.**](http://github.com/UhhhAaron/GIF-Caption-Creator/issues/new/choose)
+[**If there are problems, create an issue here.**](http://github.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/issues/new/choose)
 
 ---
 ### Supported GIF services
@@ -104,15 +104,15 @@ Be sure to copy the **raw image URL**.
   </thead>
   <tbody>
 	<tr align=center>
-		<td><a href=http://tenor.com target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/Tenor.svg alt=Tenor width=65></a></td>
-		<td><a href=http://giphy.com target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/Giphy.svg alt=Giphy width=65></a></td>
-		<td><a href=http://gfycat.com target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/Gfycat.svg alt=Gfycat width=65></a></td>
-		<td><a href=http://tumblr.com target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/Tumblr.svg alt=Tumblr width=65></a></td>
-		<td><a href=http://imgflip.com target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/ImgFlip.svg alt=ImgFlip width=65></a></td>
-		<td><a href=http://gifimage.net target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/GifImage.png alt=GifImage width=65></a></td>
-		<td><a href=http://bestanimations.com target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/BestAnimations.png alt=BestAnimations width=65></a></td>
-		<td><a href=http://gif-finder.com target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/GifFinder.png alt=GifFinder width=65></a></td>
-		<td><a href=http://reactiongifs.us target="_blank"><img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/GIF_Image_Services_Logos/ReactionGIFs.svg alt=ReactionGIFs width=65></a></td>
+		<td><a href=http://tenor.com target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Tenor.svg alt=Tenor width=65></a></td>
+		<td><a href=http://giphy.com target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Giphy.svg alt=Giphy width=65></a></td>
+		<td><a href=http://gfycat.com target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Gfycat.svg alt=Gfycat width=65></a></td>
+		<td><a href=http://tumblr.com target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/Tumblr.svg alt=Tumblr width=65></a></td>
+		<td><a href=http://imgflip.com target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/ImgFlip.svg alt=ImgFlip width=65></a></td>
+		<td><a href=http://gifimage.net target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/GifImage.png alt=GifImage width=65></a></td>
+		<td><a href=http://bestanimations.com target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/BestAnimations.png alt=BestAnimations width=65></a></td>
+		<td><a href=http://gif-finder.com target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/GifFinder.png alt=GifFinder width=65></a></td>
+		<td><a href=http://reactiongifs.us target="_blank"><img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/GIF_Image_Services_Logos/ReactionGIFs.svg alt=ReactionGIFs width=65></a></td>
 	</tr>
   </tbody>
 </table>
@@ -122,5 +122,5 @@ Be sure to copy the **raw image URL**.
 
 - | iFunny Android App | `GIF-Caption-Creator` |
   |:-:|:-:|
-  | <img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/Comparison_Graphics/1/iFunny.gif width=150> | <img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/Comparison_Graphics/1/iFunny-Captions.gif width=150> 
-  | <img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/Comparison_Graphics/2/iFunny.gif width=150> | <img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/Comparison_Graphics/2/iFunny-Captions.gif width=150> |
+  | <img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/Comparison_Graphics/1/iFunny.gif width=150> | <img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/Comparison_Graphics/1/iFunny-Captions.gif width=150> 
+  | <img src=https://raw.githubusercontent.com/Amirhan-Taipovjan-Greatest-I/iFunny-Captions/master/Documents/Pictures/Comparison_Graphics/2/iFunny.gif width=150> | <img src=https://raw.githubusercontent.com/UhhhAaron/GIF-Caption-Creator/master/Documents/Pictures/Comparison_Graphics/2/iFunny-Captions.gif width=150> |
