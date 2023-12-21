@@ -107,8 +107,8 @@ Text = wrap(
 
 #Text = wrap(
 #	"{0}".format(Config["Text"]["Content"]),
-#	width = Font.getlength(
-#		int(sorted(Text, key = len)[-1])) - int(Config["Text"]["Additional_Wrap"] * 2
+#	width = Font.getbbox(
+#		sorted(Text, key = len)[-1])[0] - int(Config["Text"]["Additional_Wrap"] * 2
 #	)
 #)
 
@@ -123,8 +123,8 @@ for Line in Text:
 	Line_Image = Image.new(
 		"RGBA",
 		(
-			int(Font.getlength("x")) * len(Line) * 2,
-			int(Font.getlength("pÓ")) * 2
+			Font.getbbox("x")[2] * len(Line) * 2,
+			Font.getbbox("pÓ")[3] * 2
 		)
 	)
 	Line_ImageDraw = ImageDraw.Draw(Line_Image)
@@ -147,7 +147,7 @@ for Line in Text:
 			Emoji = Emoji.resize(
 				(
 					Percentage(
-						int(Font.getlength("pÓ")), 75
+						Font.getbbox("pÓ")[3], 75
 					),
 				) * 2, 1
 			)
@@ -156,7 +156,7 @@ for Line in Text:
 				Emoji,
 				(
 					__X,
-					int(Font.getlength("p")) - int(Font.getlength("o")), 
+					Font.getbbox("p")[3] - Font.getbbox("o")[3], 
 				),
 				Emoji
 			)
@@ -170,7 +170,7 @@ for Line in Text:
 			fill = __Fill
 		)
 		#-=-=-=-#
-		__X += int(Font.getlength(Character)) + Config["Text"]["Kerning"]
+		__X += Font.getbbox(Character)[2] + Config["Text"]["Kerning"]
 		#-=-=-=-#
 	Line_Image = Line_Image.crop(Line_Image.getbbox())
 
@@ -178,7 +178,7 @@ for Line in Text:
 		Line_Image.mode,
 		(
 			Line_Image.size[0],
-			int(Font.getlength("yÓ")) + 5
+			Font.getbbox("yÓ")[3] + 5
 		)
 	)
 	Line_Image_2.paste(Line_Image, (0, 0), Line_Image)
@@ -192,7 +192,7 @@ for IMG in enumerate(Images):
 		"RGBA",
 		(
 			Images[IMG].size[0],
-			Images[IMG].size[1] + int(Font.getlength("yÓ")) + len(Images) * 10
+			Images[IMG].size[1] + Font.getbbox("yÓ")[3] + len(Images) * 10
 		),
 		(0,) * 4
 	) # Bug
@@ -200,7 +200,7 @@ for IMG in enumerate(Images):
 		Images[IMG],
 		(
 			0,
-			int(Font.getlength("yÓ"))
+			Font.getbbox("yÓ")[3]
 		),
 		Images[IMG]
 	)
@@ -213,7 +213,7 @@ for IMG in enumerate(Expanded_Images):
 		__Y += Expanded_Images[0].size[1] // len(Expanded_Images)
 	else:
 		__Y += Percentage(
-			int(Font.getlength("yÓ")), 112
+			Font.getbbox("yÓ")[3], 112
 		) + 5
 	Image_Base.paste(
 		Expanded_Images[IMG],
@@ -233,7 +233,7 @@ Pasted = Image.new(
 	(
 		int(Config["Media"]["Image"]["Max_Width"]),
 		Image_Base.size[1] + Percentage(
-			int(Font.getlength("yÓ")), 150
+			Font.getbbox("yÓ")[3], 150
 		)
 	),
 	__Pasted_Color
@@ -242,7 +242,7 @@ Pasted.paste(
 	Image_Base,
 	(
 		(Pasted.size[0] - Image_Base.size[0]) // 2,
-		(Pasted.size[1] - Image_Base.size[1]) // 2 + (int(Font.getlength("yÓ")) - int(Font.getlength("Ó")) if list("qypgj") in Text[:-1] else 0)
+		(Pasted.size[1] - Image_Base.size[1]) // 2 + ((Font.getbbox("yÓ")[3] - Font.getbbox("Ó")[3]) if list("qypgj") in Text[:-1] else 0)
 	),
 	Image_Base
 )
